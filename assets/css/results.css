@@ -1,0 +1,305 @@
+.flag {
+	width: 25px;
+	height: 15px;
+	margin-bottom: 9px;
+	border: none;
+	background:url(../img/flags.png) no-repeat;
+	visibility: hidden;
+}
+
+.flag.flag-AND {background-position: -25px 0}
+.flag.flag-ARE {background-position: -50px 0}
+.flag.flag-AFG {background-position: -75px 0}
+.flag.flag-ATG {background-position: -100px 0}
+.flag.flag-AIA {background-position: -125px 0}
+.flag.flag-ALB {background-position: -150px 0}
+.flag.flag-ARM {background-position: -175px 0}
+.flag.flag-ANT {background-position: -200px 0}
+.flag.flag-AGO {background-position: -225px 0}
+.flag.flag-ARG {background-position: -250px 0}
+.flag.flag-ASM {background-position: -275px 0}
+.flag.flag-AUT {background-position: -300px 0}
+.flag.flag-AUS {background-position: -325px 0}
+.flag.flag-ABW {background-position: -350px 0}
+.flag.flag-AZE {background-position: -375px 0}
+.flag.flag-BIH {background-position: 0 -15px}
+.flag.flag-BRB {background-position: -25px -15px}
+.flag.flag-BGD {background-position: -50px -15px}
+.flag.flag-BEL {background-position: -75px -15px}
+.flag.flag-BFA {background-position: -100px -15px}
+.flag.flag-BGR {background-position: -125px -15px}
+.flag.flag-BHR {background-position: -150px -15px}
+.flag.flag-BDI {background-position: -175px -15px}
+.flag.flag-BEN {background-position: -200px -15px}
+.flag.flag-BMU {background-position: -225px -15px}
+.flag.flag-BRN {background-position: -250px -15px}
+.flag.flag-BOL {background-position: -275px -15px}
+.flag.flag-BRA {background-position: -300px -15px}
+.flag.flag-BHS {background-position: -325px -15px}
+.flag.flag-BTN {background-position: -350px -15px}
+.flag.flag-BVT {background-position: -375px -15px}
+.flag.flag-BWA {background-position: 0 -30px}
+.flag.flag-BLR {background-position: -25px -30px}
+.flag.flag-BLZ {background-position: -50px -30px}
+.flag.flag-CAN {background-position: -75px -30px}
+.flag.flag-COD {background-position: -100px -30px}
+.flag.flag-CAF {background-position: -125px -30px}
+.flag.flag-COG {background-position: -150px -30px}
+.flag.flag-CHE {background-position: -175px -30px}
+.flag.flag-CIV {background-position: -200px -30px}
+.flag.flag-COK {background-position: -225px -30px}
+.flag.flag-CHL {background-position: -250px -30px}
+.flag.flag-CMR {background-position: -275px -30px}
+.flag.flag-CHN {background-position: -300px -30px}
+.flag.flag-COL {background-position: -325px -30px}
+.flag.flag-CRI {background-position: -350px -30px}
+.flag.flag-CUB {background-position: -375px -30px}
+.flag.flag-CPV {background-position: 0 -45px}
+.flag.flag-CYP {background-position: -25px -45px}
+.flag.flag-CZE {background-position: -50px -45px}
+.flag.flag-DEU {background-position: -75px -45px}
+.flag.flag-DJI {background-position: -100px -45px}
+.flag.flag-DNK {background-position: -125px -45px}
+.flag.flag-DMA {background-position: -150px -45px}
+.flag.flag-DOM {background-position: -175px -45px}
+.flag.flag-DZA {background-position: -200px -45px}
+.flag.flag-ECU {background-position: -225px -45px}
+.flag.flag-EST {background-position: -250px -45px}
+.flag.flag-EGY {background-position: -275px -45px}
+.flag.flag-ESH {background-position: -300px -45px}
+.flag.flag-ERI {background-position: -325px -45px}
+.flag.flag-ESP {background-position: -350px -45px}
+.flag.flag-ETH {background-position: -375px -45px}
+.flag.flag-EU {background-position: 0 -60px}
+.flag.flag-FIN {background-position: -25px -60px}
+.flag.flag-FJI {background-position: -50px -60px}
+.flag.flag-FLK {background-position: -75px -60px}
+.flag.flag-FSM {background-position: -100px -60px}
+.flag.flag-FRO {background-position: -125px -60px}
+.flag.flag-FRA {background-position: -150px -60px}
+.flag.flag-GAB {background-position: -175px -60px}
+.flag.flag-GBR {background-position: -200px -60px}
+.flag.flag-GRD {background-position: -225px -60px}
+.flag.flag-GEO {background-position: -250px -60px}
+.flag.flag-GUF {background-position: -275px -60px}
+.flag.flag-GGY {background-position: -300px -60px}
+.flag.flag-GHA {background-position: -325px -60px}
+.flag.flag-GIB {background-position: -350px -60px}
+.flag.flag-GRL {background-position: -375px -60px}
+.flag.flag-GMB {background-position: 0 -75px}
+.flag.flag-GIN {background-position: -25px -75px}
+.flag.flag-GLP {background-position: -50px -75px}
+.flag.flag-GNQ {background-position: -75px -75px}
+.flag.flag-GRC {background-position: -100px -75px}
+.flag.flag-SGS {background-position: -125px -75px}
+.flag.flag-GTM {background-position: -150px -75px}
+.flag.flag-GUM {background-position: -175px -75px}
+.flag.flag-GNB {background-position: -200px -75px}
+.flag.flag-GUY {background-position: -225px -75px}
+.flag.flag-HKG {background-position: -250px -75px}
+.flag.flag-HMD {background-position: -275px -75px}
+.flag.flag-HND {background-position: -300px -75px}
+.flag.flag-HRV {background-position: -325px -75px}
+.flag.flag-HTI {background-position: -350px -75px}
+.flag.flag-HUN {background-position: -375px -75px}
+.flag.flag-IDN {background-position: 0 -90px}
+.flag.flag-IRL {background-position: -25px -90px}
+.flag.flag-ISR {background-position: -50px -90px}
+.flag.flag-IND {background-position: -75px -90px}
+.flag.flag-IOT {background-position: -100px -90px}
+.flag.flag-IRQ {background-position: -125px -90px}
+.flag.flag-IRN {background-position: -150px -90px}
+.flag.flag-ISL {background-position: -175px -90px}
+.flag.flag-ITA {background-position: -200px -90px}
+.flag.flag-JEY {background-position: -225px -90px}
+.flag.flag-JAM {background-position: -250px -90px}
+.flag.flag-JOR {background-position: -275px -90px}
+.flag.flag-JPN {background-position: -300px -90px}
+.flag.flag-KEN {background-position: -325px -90px}
+.flag.flag-KGZ {background-position: -350px -90px}
+.flag.flag-KHM {background-position: -375px -90px}
+.flag.flag-KIR {background-position: 0 -105px}
+.flag.flag-COM {background-position: -25px -105px}
+.flag.flag-KNA {background-position: -50px -105px}
+.flag.flag-PRK {background-position: -75px -105px}
+.flag.flag-KOR {background-position: -100px -105px}
+.flag.flag-KWT {background-position: -125px -105px}
+.flag.flag-CYM {background-position: -150px -105px}
+.flag.flag-KAZ {background-position: -175px -105px}
+.flag.flag-LAO {background-position: -200px -105px}
+.flag.flag-LBN {background-position: -225px -105px}
+.flag.flag-LCA {background-position: -250px -105px}
+.flag.flag-LIE {background-position: -275px -105px}
+.flag.flag-LKA {background-position: -300px -105px}
+.flag.flag-LBR {background-position: -325px -105px}
+.flag.flag-LSO {background-position: -350px -105px}
+.flag.flag-LTU {background-position: -375px -105px}
+.flag.flag-LUX {background-position: 0 -120px}
+.flag.flag-LVA {background-position: -25px -120px}
+.flag.flag-LBY {background-position: -50px -120px}
+.flag.flag-MAR {background-position: -75px -120px}
+.flag.flag-MCO {background-position: -100px -120px}
+.flag.flag-MDA {background-position: -125px -120px}
+.flag.flag-MNE {background-position: -150px -120px}
+.flag.flag-MDG {background-position: -175px -120px}
+.flag.flag-MHL {background-position: -200px -120px}
+.flag.flag-MKD {background-position: -225px -120px}
+.flag.flag-MLI {background-position: -250px -120px}
+.flag.flag-MMR {background-position: -275px -120px}
+.flag.flag-MNG {background-position: -300px -120px}
+.flag.flag-MAC {background-position: -325px -120px}
+.flag.flag-MNP {background-position: -350px -120px}
+.flag.flag-MTQ {background-position: -375px -120px}
+.flag.flag-MRT {background-position: 0 -135px}
+.flag.flag-MSR {background-position: -25px -135px}
+.flag.flag-MLT {background-position: -50px -135px}
+.flag.flag-MUS {background-position: -75px -135px}
+.flag.flag-MDV {background-position: -100px -135px}
+.flag.flag-MWI {background-position: -125px -135px}
+.flag.flag-MEX {background-position: -150px -135px}
+.flag.flag-MYS {background-position: -175px -135px}
+.flag.flag-MOZ {background-position: -200px -135px}
+.flag.flag-NAM {background-position: -225px -135px}
+.flag.flag-NCL {background-position: -250px -135px}
+.flag.flag-NER {background-position: -275px -135px}
+.flag.flag-NFK {background-position: -300px -135px}
+.flag.flag-NGA {background-position: -325px -135px}
+.flag.flag-NIC {background-position: -350px -135px}
+.flag.flag-NLD {background-position: -375px -135px}
+.flag.flag-NOR {background-position: 0 -150px}
+.flag.flag-NPL {background-position: -25px -150px}
+.flag.flag-NRU {background-position: -50px -150px}
+.flag.flag-NIU {background-position: -75px -150px}
+.flag.flag-NZL {background-position: -100px -150px}
+.flag.flag-OMN {background-position: -125px -150px}
+.flag.flag-PAN {background-position: -150px -150px}
+.flag.flag-PER {background-position: -175px -150px}
+.flag.flag-PYF {background-position: -200px -150px}
+.flag.flag-PNG {background-position: -225px -150px}
+.flag.flag-PHL {background-position: -250px -150px}
+.flag.flag-PAK {background-position: -275px -150px}
+.flag.flag-POL {background-position: -300px -150px}
+.flag.flag-SPM {background-position: -325px -150px}
+.flag.flag-PCN {background-position: -350px -150px}
+.flag.flag-PRI {background-position: -375px -150px}
+.flag.flag-PSE {background-position: 0 -165px}
+.flag.flag-PRT {background-position: -25px -165px}
+.flag.flag-PLW {background-position: -50px -165px}
+.flag.flag-PRY {background-position: -75px -165px}
+.flag.flag-QAT {background-position: -100px -165px}
+.flag.flag-REU {background-position: -125px -165px}
+.flag.flag-ROU {background-position: -150px -165px}
+.flag.flag-SRB {background-position: -175px -165px}
+.flag.flag-RUS {background-position: -200px -165px}
+.flag.flag-RWA {background-position: -225px -165px}
+.flag.flag-SAU {background-position: -250px -165px}
+.flag.flag-SLB {background-position: -275px -165px}
+.flag.flag-SYC {background-position: -300px -165px}
+.flag.flag-SDN {background-position: -325px -165px}
+.flag.flag-SWE {background-position: -350px -165px}
+.flag.flag-SGP {background-position: -375px -165px}
+.flag.flag-SHN {background-position: 0 -180px}
+.flag.flag-SVN {background-position: -25px -180px}
+.flag.flag-SVK {background-position: -50px -180px}
+.flag.flag-SLE {background-position: -75px -180px}
+.flag.flag-SMR {background-position: -100px -180px}
+.flag.flag-SEN {background-position: -125px -180px}
+.flag.flag-SOM {background-position: -150px -180px}
+.flag.flag-SUR {background-position: -175px -180px}
+.flag.flag-STP {background-position: -200px -180px}
+.flag.flag-SLV {background-position: -225px -180px}
+.flag.flag-SYR {background-position: -250px -180px}
+.flag.flag-SWZ {background-position: -275px -180px}
+.flag.flag-TCA {background-position: -300px -180px}
+.flag.flag-TCD {background-position: -325px -180px}
+.flag.flag-ATF {background-position: -350px -180px}
+.flag.flag-TGO {background-position: -375px -180px}
+.flag.flag-THA {background-position: 0 -195px}
+.flag.flag-TJK {background-position: -25px -195px}
+.flag.flag-TKL {background-position: -50px -195px}
+.flag.flag-TLS {background-position: -75px -195px}
+.flag.flag-TKM {background-position: -100px -195px}
+.flag.flag-TUN {background-position: -125px -195px}
+.flag.flag-TON {background-position: -150px -195px}
+.flag.flag-TUR {background-position: -175px -195px}
+.flag.flag-TTO {background-position: -200px -195px}
+.flag.flag-TUV {background-position: -225px -195px}
+.flag.flag-TWN {background-position: -250px -195px}
+.flag.flag-TZA {background-position: -275px -195px}
+.flag.flag-UKR {background-position: -300px -195px}
+.flag.flag-UGA {background-position: -325px -195px}
+.flag.flag-UMI {background-position: -350px -195px}
+.flag.flag-USA {background-position: -375px -195px}
+.flag.flag-URY {background-position: 0 -210px}
+.flag.flag-UZB {background-position: -25px -210px}
+.flag.flag-VAT {background-position: -50px -210px}
+.flag.flag-VCT {background-position: -75px -210px}
+.flag.flag-VEN {background-position: -100px -210px}
+.flag.flag-VGB {background-position: -125px -210px}
+.flag.flag-VIR {background-position: -150px -210px}
+.flag.flag-VNM {background-position: -175px -210px}
+.flag.flag-VUT {background-position: -200px -210px}
+.flag.flag-WLF {background-position: -225px -210px}
+.flag.flag-WSM {background-position: -250px -210px}
+.flag.flag-YEM {background-position: -275px -210px}
+.flag.flag-MYT {background-position: -300px -210px}
+.flag.flag-ZAF {background-position: -325px -210px}
+.flag.flag-ZMB {background-position: -350px -210px}
+.flag.flag-ZWE {background-position: -375px -210px}
+
+/*.rating {
+.rating {
+    float:left;
+}
+
+/* :not(:checked) is a filter, so that browsers that don’t support :checked don’t 
+   follow these rules. Every browser that supports :checked also supports :not(), so
+   it doesn’t make the test unnecessarily selective */
+.rating:not(:checked) > input {
+    position:absolute;
+    top:-9999px;
+    clip:rect(0,0,0,0);
+}
+
+.rating:not(:checked) > label {
+    float:right;
+    width:1em;
+    padding:0 .1em;
+    overflow:hidden;
+    white-space:nowrap;
+    cursor:pointer;
+    font-size:100%;
+    line-height:1.2;
+    color:#ddd;
+    text-shadow:1px 1px #bbb, 2px 2px #666, .1em .1em .2em rgba(0,0,0,.5);
+}
+
+.rating:not(:checked) > label:before {
+    content: '★ ';
+}
+
+.rating > input:checked ~ label {
+    color: #f70;
+    text-shadow:1px 1px #c60, 2px 2px #940, .1em .1em .2em rgba(0,0,0,.5);
+}
+
+.rating:not(:checked) > label:hover,
+.rating:not(:checked) > label:hover ~ label {
+    color: gold;
+    text-shadow:1px 1px goldenrod, 2px 2px #B57340, .1em .1em .2em rgba(0,0,0,.5);
+}
+
+.rating > input:checked + label:hover,
+.rating > input:checked + label:hover ~ label,
+.rating > input:checked ~ label:hover,
+.rating > input:checked ~ label:hover ~ label,
+.rating > label:hover ~ input:checked ~ label {
+    color: #ea0;
+    text-shadow:1px 1px goldenrod, 2px 2px #B57340, .1em .1em .2em rgba(0,0,0,.5);
+}
+
+.rating > label:active {
+    position:relative;
+    top:2px;
+    left:2px;
+}
