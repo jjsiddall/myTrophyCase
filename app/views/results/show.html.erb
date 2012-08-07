@@ -1,0 +1,55 @@
+<p id="notice"><%= notice %></p>
+
+<p>
+  <b>Lastname:</b>
+  <%= @result.lastName %>
+</p>
+
+<p>
+  <b>Firstname:</b>
+  <%= @result.firstName %>
+</p>
+
+<p>
+  <b>Totaltime:</b>
+  <%= @result.totalTime %>
+</p>
+
+<p>
+  <b>Bib:</b>
+  <%= @result.bib %>
+</p>
+
+<p>
+  <b>Country:</b>
+  <%= @result.country %>
+</p>
+
+<p>
+  <b>Divisionrank:</b>
+  <%= @result.divisionRank %>
+</p>
+
+<p>
+  <b>Overallrank:</b>
+  <%= @result.overallRank %>
+</p>
+
+<p>
+  <b>Swimtime:</b>
+  <%= @result.swimTime %>
+</p>
+
+<p>
+  <b>Biketime:</b>
+  <%= @result.bikeTime %>
+</p>
+
+<p>
+  <b>Runtime:</b>
+  <%= @result.runTime %>
+</p>
+
+
+<%= link_to 'Edit', edit_result_path(@result) %> |
+<%= link_to 'Back', results_path %>

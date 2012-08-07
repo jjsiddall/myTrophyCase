@@ -1,0 +1,25 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/Fixtures.html
+
+one:
+  lastName: MyString
+  firstName: MyString
+  totalTime: 2012-08-05
+  bib: 1
+  country: MyString
+  divisionRank: 1
+  overallRank: 1
+  swimTime: 2012-08-05
+  bikeTime: 2012-08-05
+  runTime: 2012-08-05
+
+two:
+  lastName: MyString
+  firstName: MyString
+  totalTime: 2012-08-05
+  bib: 1
+  country: MyString
+  divisionRank: 1
+  overallRank: 1
+  swimTime: 2012-08-05
+  bikeTime: 2012-08-05
+  runTime: 2012-08-05

@@ -1,0 +1,41 @@
+<h1>Listing results</h1>
+
+<table>
+  <tr>
+    <th>Lastname</th>
+    <th>Firstname</th>
+    <th>Totaltime</th>
+    <th>Bib</th>
+    <th>Country</th>
+    <th>Divisionrank</th>
+    <th>Overallrank</th>
+    <th>Swimtime</th>
+    <th>Biketime</th>
+    <th>Runtime</th>
+    <th></th>
+    <th></th>
+    <th></th>
+  </tr>
+
+<% @results.each do |result| %>
+  <tr>
+    <td><%= result.lastName %></td>
+    <td><%= result.firstName %></td>
+    <td><%= result.totalTime %></td>
+    <td><%= result.bib %></td>
+    <td><%= result.country %></td>
+    <td><%= result.divisionRank %></td>
+    <td><%= result.overallRank %></td>
+    <td><%= result.swimTime %></td>
+    <td><%= result.bikeTime %></td>
+    <td><%= result.runTime %></td>
+    <td><%= link_to 'Show', result %></td>
+    <td><%= link_to 'Edit', edit_result_path(result) %></td>
+    <td><%= link_to 'Destroy', result, confirm: 'Are you sure?', method: :delete %></td>
+  </tr>
+<% end %>
+</table>
+
+<br />
+
+<%= link_to 'New Result', new_result_path %>

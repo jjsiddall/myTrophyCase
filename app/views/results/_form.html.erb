@@ -1,0 +1,57 @@
+<%= form_for(@result) do |f| %>
+  <% if @result.errors.any? %>
+    <div id="error_explanation">
+      <h2><%= pluralize(@result.errors.count, "error") %> prohibited this result from being saved:</h2>
+
+      <ul>
+      <% @result.errors.full_messages.each do |msg| %>
+        <li><%= msg %></li>
+      <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+  <div class="field">
+    <%= f.label :lastName %><br />
+    <%= f.text_field :lastName %>
+  </div>
+  <div class="field">
+    <%= f.label :firstName %><br />
+    <%= f.text_field :firstName %>
+  </div>
+  <div class="field">
+    <%= f.label :totalTime %><br />
+    <%= f.date_select :totalTime %>
+  </div>
+  <div class="field">
+    <%= f.label :bib %><br />
+    <%= f.number_field :bib %>
+  </div>
+  <div class="field">
+    <%= f.label :country %><br />
+    <%= f.text_field :country %>
+  </div>
+  <div class="field">
+    <%= f.label :divisionRank %><br />
+    <%= f.number_field :divisionRank %>
+  </div>
+  <div class="field">
+    <%= f.label :overallRank %><br />
+    <%= f.number_field :overallRank %>
+  </div>
+  <div class="field">
+    <%= f.label :swimTime %><br />
+    <%= f.date_select :swimTime %>
+  </div>
+  <div class="field">
+    <%= f.label :bikeTime %><br />
+    <%= f.date_select :bikeTime %>
+  </div>
+  <div class="field">
+    <%= f.label :runTime %><br />
+    <%= f.date_select :runTime %>
+  </div>
+  <div class="actions">
+    <%= f.submit %>
+  </div>
+<% end %>
