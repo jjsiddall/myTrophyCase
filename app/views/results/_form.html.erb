@@ -12,16 +12,13 @@
   <% end %>
 
   <div class="field">
-    <%= f.label :lastName %><br />
-    <%= f.text_field :lastName %>
+    <%= f.label :racerName %><br />
+    <%= f.text_field :racerName %>
   </div>
-  <div class="field">
-    <%= f.label :firstName %><br />
-    <%= f.text_field :firstName %>
-  </div>
+
   <div class="field">
     <%= f.label :totalTime %><br />
-    <%= f.date_select :totalTime %>
+    <%= f.time_select :totalTime %>
   </div>
   <div class="field">
     <%= f.label :bib %><br />
@@ -41,17 +38,156 @@
   </div>
   <div class="field">
     <%= f.label :swimTime %><br />
-    <%= f.date_select :swimTime %>
+    <%= f.time_select :swimTime %>
   </div>
   <div class="field">
     <%= f.label :bikeTime %><br />
-    <%= f.date_select :bikeTime %>
+    <%= f.time_select :bikeTime %>
   </div>
   <div class="field">
     <%= f.label :runTime %><br />
-    <%= f.date_select :runTime %>
+    <%= f.time_select :runTime %>
   </div>
   <div class="actions">
     <%= f.submit %>
   </div>
+
+    <div class="container">
+
+      <div class="row"> <!--row 1 -->
+        <div class="span3">
+          <label>Racer Name</label>
+          <input id="racer_name-Input" type="text" class="input-large"  data-provide="typeahead" data-items="8">
+          <img id="country-Img" alt="Country Flag" class="flag" />    
+        </div>
+
+        <div class="span1">
+          <label>Bib</label>
+          <input id="bib-Input" type="text" class="input-mini" >
+        </div>
+
+        <div class="span1">
+          <label>Race Time</label>
+          <input id="total_Time-Input" type="text" class="input-mini" >
+        </div>
+
+
+        <div class="span1">
+          <label>Division</label>
+          <input id="division_Rank-Input" type="text" class="input-mini" >
+        </div>
+
+        <div class="span1">
+          <label>Overall</label>
+          <input id="overall_Rank-Input" type="text" class="input-mini" >          
+        </div>
+      </div>
+
+      <div class="row"> <!--row 2 -->
+        <div class="span12">
+          
+          <div class="accordion" id="accordion2">
+            <div class="accordion-group ">
+              <div class="accordion-heading">
+                <a class="accordion-toggle" data-toggle="collapse" data-parent="#accordion2" href="#collapseOne">
+                  Overall
+                </a>
+              </div>
+              <div id="collapseOne" class="accordion-body collapse in">
+                <div class="accordion-inner">
+                  <div class="span2"> 
+                    Your Race - happy faces? 
+                    <fieldset class="rating">
+                      Overall:
+                      <input type="radio" id="overall_5" name="overall" value="5" /><label for="overall_5" title="Excellent">5 stars</label>
+                      <input type="radio" id="overall_4" name="overall" value="4" /><label for="overall_4" title="Good">4 stars</label>
+                      <input type="radio" id="overall_3" name="overall" value="3" /><label for="overall_3" title="Ok">3 stars</label>
+                      <input type="radio" id="overall_2" name="overall" value="2" /><label for="overall_2" title="Poor">2 stars</label>
+                      <input type="radio" id="overall_1" name="overall" value="1" /><label for="overall_1" title="Terrible">1 star</label>
+                    </fieldset>
+                    <fieldset class="rating">
+                      Support:
+                      <input type="radio" id="star5" name="rating" value="5" /><label for="star5" title="Excellent">5 stars</label>
+                      <input type="radio" id="star4" name="rating" value="4" /><label for="star4" title="Good">4 stars</label>
+                      <input type="radio" id="star3" name="rating" value="3" /><label for="star3" title="Ok">3 stars</label>
+                      <input type="radio" id="star2" name="rating" value="2" /><label for="star2" title="Poor">2 stars</label>
+                      <input type="radio" id="star1" name="rating" value="1" /><label for="star1" title="Terrible">1 star</label>
+                    </fieldset>
+                    
+                  </div>
+                </div>
+              </div>
+            </div>
+            <div class="accordion-group ">
+              <div class="accordion-heading">
+                <a class="accordion-toggle" data-toggle="collapse" data-parent="#accordion2" href="#collapseTwo">
+                  Swim
+                </a>
+              </div>
+              <div id="collapseTwo" class="accordion-body collapse">
+                <div class="accordion-inner">
+                  <img src="http://ironmanarizona.com/files/2010/09/Swim.jpg" alt="Swim Course Photo" height="250" width="350">
+                  <input type="text" class="input-mini" id="swim_Time-Input">
+                  your swim - stars
+                </div>
+              </div>
+            </div>
+            <div class="accordion-group ">
+              <div class="accordion-heading">
+                <a class="accordion-toggle" data-toggle="collapse" data-parent="#accordion2" href="#collapseThree">
+                  Transition #1
+                </a>
+              </div>
+              <div id="collapseThree" class="accordion-body collapse">
+                <div class="accordion-inner">
+                  Anim pariatur cliche reprehenderit, enim eiusmod high life accusamus terry richardson ad squid. 3 wolf moon officia aute, non cupidatat skateboard dolor brunch. Food truck quinoa nesciunt laborum eiusmod. Brunch 3 wolf moon tempor, sunt aliqua put a bird on it squid single-origin coffee nulla assumenda shoreditch et. Nihil anim keffiyeh helvetica, craft beer labore wes anderson cred nesciunt sapiente ea proident. Ad vegan excepteur butcher vice lomo. Leggings occaecat craft beer farm-to-table, raw denim aesthetic synth nesciunt you probably haven't heard of them accusamus labore sustainable VHS.
+                </div>
+              </div>
+            </div>
+
+            <div class="accordion-group ">
+              <div class="accordion-heading">
+                <a class="accordion-toggle" data-toggle="collapse" data-parent="#accordion2" href="#collapseFour">
+                  Bike
+                </a>
+              </div>
+              <div id="collapseFour" class="accordion-body collapse">
+                <div class="accordion-inner">
+                  <img src="http://ironmanarizona.com/files/2010/09/Bike.jpg" alt="Bike Course Photo" height="250" width="350">
+                  <input type="text" class="input-mini" id="bike_Time-Input">
+                </div>
+              </div>
+            </div>
+
+            <div class="accordion-group ">
+              <div class="accordion-heading">
+                <a class="accordion-toggle" data-toggle="collapse" data-parent="#accordion2" href="#collapseFive">
+                  Transition #2
+                </a>
+              </div>
+              <div id="collapseFive" class="accordion-body collapse">
+                <div class="accordion-inner">
+                  Anim pariatur cliche reprehenderit, enim eiusmod high life accusamus terry richardson ad squid. 3 wolf moon officia aute, non cupidatat skateboard dolor brunch. Food truck quinoa nesciunt laborum eiusmod. Brunch 3 wolf moon tempor, sunt aliqua put a bird on it squid single-origin coffee nulla assumenda shoreditch et. Nihil anim keffiyeh helvetica, craft beer labore wes anderson cred nesciunt sapiente ea proident. Ad vegan excepteur butcher vice lomo. Leggings occaecat craft beer farm-to-table, raw denim aesthetic synth nesciunt you probably haven't heard of them accusamus labore sustainable VHS.
+                </div>
+              </div>
+            </div>
+
+            <div class="accordion-group ">
+              <div class="accordion-heading">
+                <a class="accordion-toggle" data-toggle="collapse" data-parent="#accordion2" href="#collapseSix">
+                  Run
+                </a>
+              </div>
+              <div id="collapseSix" class="accordion-body collapse">
+                <div class="accordion-inner">
+                  <img src="http://ironmanarizona.com/files/2010/09/Run.jpg" alt="Run Course Photo" height="250" width="350">
+                  <input type="text" class="input-mini" id="run_Time-Input">
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div> <!--the end of the container -->
+
 <% end %>

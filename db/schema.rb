@@ -11,21 +11,20 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20120805232206) do
+ActiveRecord::Schema.define(:version => 20120807043032) do
 
   create_table "results", :force => true do |t|
-    t.string   "lastName"
-    t.string   "firstName"
-    t.date     "totalTime"
+    t.string   "racerName"
     t.integer  "bib"
     t.string   "country"
     t.integer  "divisionRank"
     t.integer  "overallRank"
-    t.date     "swimTime"
-    t.date     "bikeTime"
-    t.date     "runTime"
     t.datetime "created_at",   :null => false
     t.datetime "updated_at",   :null => false
+    t.time     "totalTime"
+    t.time     "swimTime"
+    t.time     "bikeTime"
+    t.time     "runTime"
   end
 
 end

@@ -1,15 +1,9 @@
 <p id="notice"><%= notice %></p>
 
 <p>
-  <b>Lastname:</b>
-  <%= @result.lastName %>
+  <b>Racer Name:</b>
+  <%= @result.racerName %>
 </p>
-
-<p>
-  <b>Firstname:</b>
-  <%= @result.firstName %>
-</p>
-
 <p>
   <b>Totaltime:</b>
   <%= @result.totalTime %>
@@ -53,3 +47,6 @@
 
 <%= link_to 'Edit', edit_result_path(@result) %> |
 <%= link_to 'Back', results_path %>
+
+
+

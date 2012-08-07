@@ -19,8 +19,7 @@
 
 <% @results.each do |result| %>
   <tr>
-    <td><%= result.lastName %></td>
-    <td><%= result.firstName %></td>
+    <td><%= result.racerName %></td>
     <td><%= result.totalTime %></td>
     <td><%= result.bib %></td>
     <td><%= result.country %></td>
@@ -39,3 +38,5 @@
 <br />
 
 <%= link_to 'New Result', new_result_path %>
+
+
