@@ -4,8 +4,6 @@ class ResultsController < ApplicationController
   def index
     @results = Result.all
     
-    @autocomplete_items = Model.all
-    
     respond_to do |format|
       format.html # index.html.erb
       format.json { render json: @results }
