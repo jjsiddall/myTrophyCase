@@ -12,13 +12,13 @@ $(function() {
 
   });
 
-  // $('#racer_name-Input').change( function() {
-  //     console.log($('#racer_name-Input').val() + " change"); //.match("((.*?))")[1]);
+  // $('#result_racerName').change( function() {
+  //     console.log($('#result_racerName').val() + " change"); //.match("((.*?))")[1]);
   // });
 
-  $('#racer_name-Input').bind("change keypress keyup", function(event){
+  $('#result_racerName').bind("change keypress keyup", function(event){
   
-      var racerName = $('#racer_name-Input').val();
+      var racerName = $('#result_racerName').val();
       // If valu e has changed...of only the first letter in the last name, query for last names starting with that letter for that race
       if (racerName.length === 1) {
         getPageDataYQL(racerName);
@@ -33,7 +33,7 @@ $(function() {
         populateGeneralRaceData(globalRacersObject[isMatchArray[1]]);
       }
 
-      // if ($('#racer_name-Input').val().match("((.*?))")[1] != "") {
+      // if ($('#result_racerName').val().match("((.*?))")[1] != "") {
       //   console.log("found a bib")
       // }
    });
@@ -109,7 +109,7 @@ function filterForNamesArray(data){
   //We have a bunch of racers, now we need to put them into an array that the "bootstrap typeahead" can read and use
   namesArray = namesAndBibsOnly(racers); //we'll reuse the namesArray from above, its the same thing, but in a useable format
   //update the "bootstrap typeahead" with racer names and bib#s
-  var autocomplete = $('#racer_name-Input').typeahead();
+  var autocomplete = $('#result_racerName').typeahead();
   autocomplete.data('typeahead').source = namesArray;
   
   console.log(racers)
@@ -136,7 +136,7 @@ function populateGeneralRaceData(racer){
   // var alpha3Country = new Locale("en", "US").getISO3Country();
   // console.log(alpha3Country)
 
-  $('#racer_name-Input').val(racer.lastName + ", " + racer.firstName)
+  $('#result_racerName').val(racer.lastName + ", " + racer.firstName)
   $("#total_Time-Input").val(racer.totalTime)
   $("#bib-Input").val(racer.bib)
   $("#country-Input").val(racer.country)

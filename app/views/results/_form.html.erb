@@ -11,10 +11,17 @@
     </div>
   <% end %>
 
-  <div class="field">
-    <%= f.label :racerName %><br />
-    <%= f.text_field :racerName %>
-  </div>
+    <div class="container">
+
+      <div class="row"> <!--row 1 -->
+        <div class="span4">
+            <%= f.label :racerName, "Racer Name" %>
+            <%= f.text_field :racerName, :class => "input-large", :data => { :provide => 'typeahead', :items => '8'}, :size => nil  %>
+ 
+          <!-- <input id="result_racerName" type="text" class="input-large"  data-provide="typeahead" data-items="8"> -->
+          <img id="country-Img" alt="Country Flag" class="flag" />    
+        </div>
+      </div>
 
   <div class="field">
     <%= f.label :totalTime %><br />
@@ -52,14 +59,6 @@
     <%= f.submit %>
   </div>
 
-    <div class="container">
-
-      <div class="row"> <!--row 1 -->
-        <div class="span3">
-          <label>Racer Name</label>
-          <input id="racer_name-Input" type="text" class="input-large"  data-provide="typeahead" data-items="8">
-          <img id="country-Img" alt="Country Flag" class="flag" />    
-        </div>
 
         <div class="span1">
           <label>Bib</label>
