@@ -2,6 +2,13 @@
 /************************************************************
         This is use for the Flags (associated with country)
 *************************************************************/
+.hideMe {
+    visibility: hidden
+}
+
+.showMe {
+    visibility: visible
+}
 
 .flag {
 	width: 25px;
@@ -9,7 +16,6 @@
 	margin-bottom: 9px;
 	border: none;
 	background:url(flags.png) no-repeat;
-	visibility: hidden;
 }
 
 .flag.flag-AND {background-position: -25px 0}

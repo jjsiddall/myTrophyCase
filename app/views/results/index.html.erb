@@ -1,16 +1,16 @@
 <h1>Listing results</h1>
 
-<table>
+<table class="table table">
   <tr>
     <th>Racer Name</th>
-    <th>Totaltime</th>
+    <th>Total Time</th>
     <th>Bib</th>
     <th>Country</th>
-    <th>Divisionrank</th>
-    <th>Overallrank</th>
-    <th>Swimtime</th>
-    <th>Biketime</th>
-    <th>Runtime</th>
+    <th>Division Rank</th>
+    <th>Overall Rank</th>
+    <th>Swim Time</th>
+    <th>Bike Time</th>
+    <th>Run Time</th>
     <th></th>
     <th></th>
     <th></th>
@@ -18,24 +18,23 @@
 
 <% @results.each do |result| %>
   <tr>
-    <td><%= result.racerName %></td>
-    <td><%= result.totalTime %></td>
+    <td><%= link_to result.racerName, result %></td>
+    <td><%= result.totalTime.try(:strftime, "%H:%M:%S") %></td>
     <td><%= result.bib %></td>
-    <td><%= result.country %></td>
+    <td><%= image_tag("", :class => "flag flag-#{result.country} showMe", :alt => "Country Flag")%>
     <td><%= result.divisionRank %></td>
     <td><%= result.overallRank %></td>
-    <td><%= result.swimTime %></td>
-    <td><%= result.bikeTime %></td>
-    <td><%= result.runTime %></td>
-    <td><%= link_to 'Show', result %></td>
-    <td><%= link_to 'Edit', edit_result_path(result) %></td>
-    <td><%= link_to 'Destroy', result, confirm: 'Are you sure?', method: :delete %></td>
+    <td><%= result.swimTime.try(:strftime, "%H:%M:%S") %></td>
+    <td><%= result.bikeTime.try(:strftime, "%H:%M:%S") %></td>
+    <td><%= result.runTime.try(:strftime, "%H:%M:%S") %></td>
+    <td><%= link_to 'Edit', edit_result_path(result), :class => "btn" %></td>
+    <td><%= link_to 'Destroy', result, :class => "btn btn-danger", confirm: 'Are you sure?', method: :delete %></td>
   </tr>
 <% end %>
 </table>
 
 <br />
 
-<%= link_to 'New Result', new_result_path %>
+<%= link_to 'Add Another', new_result_path, :class => "btn btn-large" %>
 
 

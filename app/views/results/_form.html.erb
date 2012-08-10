@@ -1,3 +1,4 @@
+<title>"test"</title>
 <%= form_for(@result) do |f| %>
   <% if @result.errors.any? %>
     <div id="error_explanation">
@@ -11,38 +12,36 @@
     </div>
   <% end %>
 
-    <div class="container">
+<!-- Puts the first row on page to display major items: name, bib, overall time, Division, and place -->
+  <div class="row well form-inline"> <!--row 1 -->
+    <%if f.object.country.nil? %>
+      <% countryClass = "flag hideMe" %>
+    <%else %>
+      <% countryClass = "flag flag-#{f.object.country} showMe" %>
+    <%end %>
+    <%= image_tag("", :class => countryClass, :alt => "Country Flag")%>
 
-      <div class="row"> <!--row 1 -->
-        <div class="span4">
-            <%= f.label :racerName, "Racer Name" %>
-            <%= f.text_field :racerName, :class => "input-large", :data => { :provide => 'typeahead', :items => '8'}, :size => nil  %>
- 
-          <!-- <input id="result_racerName" type="text" class="input-large"  data-provide="typeahead" data-items="8"> -->
-          <img id="country-Img" alt="Country Flag" class="flag" />    
-        </div>
-      </div>
+<!--     <img id="country-Img" alt="Country Flag" class="flag "/>     -->
 
-  <div class="field">
-    <%= f.label :totalTime %><br />
-    <%= f.time_select :totalTime %>
+    <!-- Country is hidden as due to the sprite flag shown in its place -->
+    <%= f.hidden_field :country %>
+
+    <%= f.label :racerName, "Racer:" %>
+    <%= f.text_field :racerName, :class => "input-large", :data => { :provide => 'typeahead', :items => '8'}, :size => nil  %>    
+    <%= f.label :bib, "Bib #:" %>
+    <%= f.text_field :bib, :class => "input-mini", :size => nil %>
+    <%= f.label :totalTime, "Time:" %>
+    <%= f.text_field :totalTime, :class => "input-mini", :value => f.object.totalTime.try(:strftime, "%H:%M:%S") %>
+    <%= f.label :divisionRank, "Division:" %>
+    <%= f.text_field :divisionRank, :class => "input-mini" %>
+    <%= f.label :overallRank, "Overall:" %>
+    <%= f.text_field :overallRank, :class => "input-mini" %>
+    <%= f.submit "Add Race Result", :class => "btn btn-primary pull-right" %>
   </div>
-  <div class="field">
-    <%= f.label :bib %><br />
-    <%= f.number_field :bib %>
-  </div>
-  <div class="field">
-    <%= f.label :country %><br />
-    <%= f.text_field :country %>
-  </div>
-  <div class="field">
-    <%= f.label :divisionRank %><br />
-    <%= f.number_field :divisionRank %>
-  </div>
-  <div class="field">
-    <%= f.label :overallRank %><br />
-    <%= f.number_field :overallRank %>
-  </div>
+
+
+
+
   <div class="field">
     <%= f.label :swimTime %><br />
     <%= f.time_select :swimTime %>
@@ -55,32 +54,10 @@
     <%= f.label :runTime %><br />
     <%= f.time_select :runTime %>
   </div>
-  <div class="actions">
-    <%= f.submit %>
-  </div>
 
 
-        <div class="span1">
-          <label>Bib</label>
-          <input id="bib-Input" type="text" class="input-mini" >
-        </div>
-
-        <div class="span1">
-          <label>Race Time</label>
-          <input id="total_Time-Input" type="text" class="input-mini" >
-        </div>
 
 
-        <div class="span1">
-          <label>Division</label>
-          <input id="division_Rank-Input" type="text" class="input-mini" >
-        </div>
-
-        <div class="span1">
-          <label>Overall</label>
-          <input id="overall_Rank-Input" type="text" class="input-mini" >          
-        </div>
-      </div>
 
       <div class="row"> <!--row 2 -->
         <div class="span12">
@@ -187,6 +164,5 @@
           </div>
         </div>
       </div>
-    </div> <!--the end of the container -->
 
 <% end %>

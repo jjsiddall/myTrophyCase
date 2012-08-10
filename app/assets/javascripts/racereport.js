@@ -137,16 +137,16 @@ function populateGeneralRaceData(racer){
   // console.log(alpha3Country)
 
   $('#result_racerName').val(racer.lastName + ", " + racer.firstName)
-  $("#total_Time-Input").val(racer.totalTime)
-  $("#bib-Input").val(racer.bib)
-  $("#country-Input").val(racer.country)
+  $("#result_totalTime").val(racer.totalTime)
+  $("#result_bib").val(racer.bib)
+  $("#result_country").val(racer.country)
 
-  $("#country-Img").attr("class", "flag flag-" + racer.country.toUpperCase());
+  $(".flag").attr("class", "flag flag-" + racer.country.toUpperCase());
   $(".flag").css("visibility", "visible")
 
-  $("#division_Rank-Input").val(racer.divRank)
-  $("#overall_Rank-Input").val(racer.overallRank)
-  $("#swim_Time-Input").val(racer.swimTime)
-  $("#bike_Time-Input").val(racer.bikeTime)
-  $("#run_Time-Input").val(racer.runTime)
+  $("#result_divisionRank").val(racer.divRank)
+  $("#result_overallRank").val(racer.overallRank)
+  $("#result_swimTime").val(racer.swimTime)
+  $("#result_bikeTime").val(racer.bikeTime)
+  $("#result_runTime").val(racer.runTime)
 }
