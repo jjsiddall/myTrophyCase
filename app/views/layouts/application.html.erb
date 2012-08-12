@@ -53,7 +53,15 @@
                       <a href="#contact">View</a>
                     </li>
                 		<li><button type="submit" class="btn pull-right" id="test-Button">Test-Env</button></li>
-              		</ul>
+                    
+                    <% if current_user %>
+                      <li><%= link_to current_user.email, current_user.email %></li>
+                      <li><%= link_to "Log Out", logout_path %></li>
+                    <% else %>
+                      <li><%= link_to "Sign Up", signup_path %> </li>
+                      <li><%= link_to "Log In", login_path %> </li>
+                    <% end %>
+                  </ul>
             	</div><!--/.nav-collapse -->
       	   </div>
         </div>
@@ -61,7 +69,10 @@
       
     <!-- seems like standard bootstrap - where everything is held, but I need to go back and check -->
   <div class="container">
-
+    <% flash.each do |name, msg| %>
+      <%= content_tag :div, msg, id: "flash_#{name}" %>
+    <% end %>
+    
     <%= yield %>
 
 	</div>

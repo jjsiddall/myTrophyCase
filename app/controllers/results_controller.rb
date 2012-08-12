@@ -1,4 +1,5 @@
 class ResultsController < ApplicationController
+  before_filter :authorize, only: [:edit, :create]
   # GET /results
   # GET /results.json
   def index

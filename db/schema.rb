@@ -11,7 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20120807043032) do
+ActiveRecord::Schema.define(:version => 20120812050606) do
 
   create_table "results", :force => true do |t|
     t.string   "racerName"
@@ -25,6 +25,13 @@ ActiveRecord::Schema.define(:version => 20120807043032) do
     t.time     "swimTime"
     t.time     "bikeTime"
     t.time     "runTime"
+  end
+
+  create_table "users", :force => true do |t|
+    t.string   "email"
+    t.string   "password_digest"
+    t.datetime "created_at",      :null => false
+    t.datetime "updated_at",      :null => false
   end
 
 end
