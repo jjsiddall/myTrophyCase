@@ -1,5 +1,6 @@
 <title>"test"</title>
 <%= form_for(@result) do |f| %>
+
   <% if @result.errors.any? %>
     <div id="error_explanation">
       <h2><%= pluralize(@result.errors.count, "error") %> prohibited this result from being saved:</h2>
@@ -13,156 +14,173 @@
   <% end %>
 
 <!-- Puts the first row on page to display major items: name, bib, overall time, Division, and place -->
-  <div class="row well form-inline"> <!--row 1 -->
-    <%if f.object.country.nil? %>
-      <% countryClass = "flag hideMe" %>
-    <%else %>
-      <% countryClass = "flag flag-#{f.object.country} showMe" %>
-    <%end %>
-    <%= image_tag("", :class => countryClass, :alt => "Country Flag")%>
+  <div class="row"> <!--row 1 -->
+    <div class="span12">
+      <div class="well form-inline">
+  <!--Used to figure out if flag should be shown or not -->
+        <%if f.object.country.nil? %>
+          <% countryClass = "flag hideMe" %>
+        <%else %>
+          <% countryClass = "flag flag-#{f.object.country} showMe" %>
+        <%end %>
+        <%= image_tag("", :class => countryClass, :alt => "Country Flag")%>
 
-<!--     <img id="country-Img" alt="Country Flag" class="flag "/>     -->
+        <!-- Country is hidden as due to the sprite flag shown in its place -->
+        <%= f.hidden_field :country %>
 
-    <!-- Country is hidden as due to the sprite flag shown in its place -->
-    <%= f.hidden_field :country %>
-
-    <%= f.label :racerName, "Racer:" %>
-    <%= f.text_field :racerName, :class => "input-large", :data => { :provide => 'typeahead', :items => '8'}, :size => nil  %>    
-    <%= f.label :bib, "Bib #:" %>
-    <%= f.text_field :bib, :class => "input-mini", :size => nil %>
-    <%= f.label :totalTime, "Time:" %>
-    <%= f.text_field :totalTime, :class => "input-mini", :value => f.object.totalTime.try(:strftime, "%H:%M:%S") %>
-    <%= f.label :divisionRank, "Division:" %>
-    <%= f.text_field :divisionRank, :class => "input-mini" %>
-    <%= f.label :overallRank, "Overall:" %>
-    <%= f.text_field :overallRank, :class => "input-mini" %>
-    <%= f.submit "Add Race Result", :class => "btn btn-primary pull-right" %>
+        <%= f.label :racerName, "Racer:" %>
+        <%= f.text_field :racerName, :class => "input-large", :data => { :provide => 'typeahead', :items => '8'}, :size => nil  %>    
+        <%= f.label :bib, "Bib #:" %>
+        <%= f.text_field :bib, :class => "input-mini", :size => nil %>
+        <%= f.label :totalTime, "Time:" %>
+        <%= f.text_field :totalTime, :class => "input-mini", :value => f.object.totalTime.try(:strftime, "%H:%M:%S") %>
+        <%= f.label :divisionRank, "Division:" %>
+        <%= f.text_field :divisionRank, :class => "input-mini" %>
+        <%= f.label :overallRank, "Overall:" %>
+        <%= f.text_field :overallRank, :class => "input-mini" %>
+        <%= f.submit "Add Race Result", :class => "btn btn-primary pull-right" %>
+      </div>
+    </div>
   </div>
 
-
-
-
-  <div class="field">
-    <%= f.label :swimTime %><br />
-    <%= f.time_select :swimTime %>
-  </div>
-  <div class="field">
-    <%= f.label :bikeTime %><br />
-    <%= f.time_select :bikeTime %>
-  </div>
-  <div class="field">
-    <%= f.label :runTime %><br />
-    <%= f.time_select :runTime %>
-  </div>
-
-
-
-
-
-      <div class="row"> <!--row 2 -->
-        <div class="span12">
-          
-          <div class="accordion" id="accordion2">
-            <div class="accordion-group ">
-              <div class="accordion-heading">
-                <a class="accordion-toggle" data-toggle="collapse" data-parent="#accordion2" href="#collapseOne">
-                  Overall
-                </a>
-              </div>
-              <div id="collapseOne" class="accordion-body collapse in">
-                <div class="accordion-inner">
-                  <div class="span2"> 
-                    Your Race - happy faces? 
-                    <fieldset class="rating">
-                      Overall:
-                      <input type="radio" id="overall_5" name="overall" value="5" /><label for="overall_5" title="Excellent">5 stars</label>
-                      <input type="radio" id="overall_4" name="overall" value="4" /><label for="overall_4" title="Good">4 stars</label>
-                      <input type="radio" id="overall_3" name="overall" value="3" /><label for="overall_3" title="Ok">3 stars</label>
-                      <input type="radio" id="overall_2" name="overall" value="2" /><label for="overall_2" title="Poor">2 stars</label>
-                      <input type="radio" id="overall_1" name="overall" value="1" /><label for="overall_1" title="Terrible">1 star</label>
-                    </fieldset>
-                    <fieldset class="rating">
-                      Support:
-                      <input type="radio" id="star5" name="rating" value="5" /><label for="star5" title="Excellent">5 stars</label>
-                      <input type="radio" id="star4" name="rating" value="4" /><label for="star4" title="Good">4 stars</label>
-                      <input type="radio" id="star3" name="rating" value="3" /><label for="star3" title="Ok">3 stars</label>
-                      <input type="radio" id="star2" name="rating" value="2" /><label for="star2" title="Poor">2 stars</label>
-                      <input type="radio" id="star1" name="rating" value="1" /><label for="star1" title="Terrible">1 star</label>
-                    </fieldset>
-                    
-                  </div>
-                </div>
+<!-- Row that contains the Accordian -->
+  <div class="row"> <!--row 2 -->
+    <div class="span12">
+      <div class="accordion" id="accordion2">
+        <div class="accordion-group ">
+          <div class="accordion-heading">
+            <a class="accordion-toggle" data-toggle="collapse" data-parent="#accordion2" href="#collapseOne">
+              Overall
+            </a>
+          </div>
+          <div id="collapseOne" class="accordion-body collapse ">
+            <div class="accordion-inner">
+              <div class="span2"> 
+                Your Race - happy faces? 
+                <fieldset class="rating">
+                  Overall:
+                  <input type="radio" id="overall_5" name="overall" value="5" /><label for="overall_5" title="Excellent">5 stars</label>
+                  <input type="radio" id="overall_4" name="overall" value="4" /><label for="overall_4" title="Good">4 stars</label>
+                  <input type="radio" id="overall_3" name="overall" value="3" /><label for="overall_3" title="Ok">3 stars</label>
+                  <input type="radio" id="overall_2" name="overall" value="2" /><label for="overall_2" title="Poor">2 stars</label>
+                  <input type="radio" id="overall_1" name="overall" value="1" /><label for="overall_1" title="Terrible">1 star</label>
+                </fieldset>
+                <fieldset class="rating">
+                  Support:
+                  <input type="radio" id="star5" name="rating" value="5" /><label for="star5" title="Excellent">5 stars</label>
+                  <input type="radio" id="star4" name="rating" value="4" /><label for="star4" title="Good">4 stars</label>
+                  <input type="radio" id="star3" name="rating" value="3" /><label for="star3" title="Ok">3 stars</label>
+                  <input type="radio" id="star2" name="rating" value="2" /><label for="star2" title="Poor">2 stars</label>
+                  <input type="radio" id="star1" name="rating" value="1" /><label for="star1" title="Terrible">1 star</label>
+                </fieldset>
+                
               </div>
             </div>
-            <div class="accordion-group ">
-              <div class="accordion-heading">
-                <a class="accordion-toggle" data-toggle="collapse" data-parent="#accordion2" href="#collapseTwo">
-                  Swim
-                </a>
+          </div>
+        </div>
+        <div class="accordion-group ">
+          <div class="accordion-heading">
+            <a class="accordion-toggle" data-toggle="collapse" data-parent="#accordion2" href="#collapseTwo">
+              Swim
+            </a>
+          </div>
+          <div id="collapseTwo" class="accordion-body collapse ">
+            <div class="accordion-inner">
+              <div class="span4">
+                <img src="http://ironmanarizona.com/files/2010/09/Swim.jpg" alt="Swim Course Photo" height="250" width="350">
               </div>
-              <div id="collapseTwo" class="accordion-body collapse">
-                <div class="accordion-inner">
-                  <img src="http://ironmanarizona.com/files/2010/09/Swim.jpg" alt="Swim Course Photo" height="250" width="350">
-                  <input type="text" class="input-mini" id="swim_Time-Input">
-                  your swim - stars
-                </div>
+              <div class="span4">
+                <%= f.label :swimTime, "Swim Time:" %>
+                <%= f.text_field :swimTime, :class => "input-mini", :value => f.object.swimTime.try(:strftime, "%H:%M:%S") %>
+                your swim - stars
               </div>
-            </div>
-            <div class="accordion-group ">
-              <div class="accordion-heading">
-                <a class="accordion-toggle" data-toggle="collapse" data-parent="#accordion2" href="#collapseThree">
-                  Transition #1
-                </a>
-              </div>
-              <div id="collapseThree" class="accordion-body collapse">
-                <div class="accordion-inner">
-                  Anim pariatur cliche reprehenderit, enim eiusmod high life accusamus terry richardson ad squid. 3 wolf moon officia aute, non cupidatat skateboard dolor brunch. Food truck quinoa nesciunt laborum eiusmod. Brunch 3 wolf moon tempor, sunt aliqua put a bird on it squid single-origin coffee nulla assumenda shoreditch et. Nihil anim keffiyeh helvetica, craft beer labore wes anderson cred nesciunt sapiente ea proident. Ad vegan excepteur butcher vice lomo. Leggings occaecat craft beer farm-to-table, raw denim aesthetic synth nesciunt you probably haven't heard of them accusamus labore sustainable VHS.
-                </div>
-              </div>
-            </div>
+              <div class="span3">
 
-            <div class="accordion-group ">
-              <div class="accordion-heading">
-                <a class="accordion-toggle" data-toggle="collapse" data-parent="#accordion2" href="#collapseFour">
-                  Bike
-                </a>
-              </div>
-              <div id="collapseFour" class="accordion-body collapse">
-                <div class="accordion-inner">
-                  <img src="http://ironmanarizona.com/files/2010/09/Bike.jpg" alt="Bike Course Photo" height="250" width="350">
-                  <input type="text" class="input-mini" id="bike_Time-Input">
-                </div>
               </div>
             </div>
+          </div>
+        </div>
+        <div class="accordion-group ">
+          <div class="accordion-heading">
+            <a class="accordion-toggle" data-toggle="collapse" data-parent="#accordion2" href="#collapseThree">
+              Transition #1
+            </a>
+          </div>
+          <div id="collapseThree" class="accordion-body collapse">
+            <div class="accordion-inner">
+              Anim pariatur cliche reprehenderit, enim eiusmod high life accusamus terry richardson ad squid. 3 wolf moon officia aute, non cupidatat skateboard dolor brunch. Food truck quinoa nesciunt laborum eiusmod. Brunch 3 wolf moon tempor, sunt aliqua put a bird on it squid single-origin coffee nulla assumenda shoreditch et. Nihil anim keffiyeh helvetica, craft beer labore wes anderson cred nesciunt sapiente ea proident. Ad vegan excepteur butcher vice lomo. Leggings occaecat craft beer farm-to-table, raw denim aesthetic synth nesciunt you probably haven't heard of them accusamus labore sustainable VHS.
+            </div>
+          </div>
+        </div>
 
-            <div class="accordion-group ">
-              <div class="accordion-heading">
-                <a class="accordion-toggle" data-toggle="collapse" data-parent="#accordion2" href="#collapseFive">
-                  Transition #2
-                </a>
+        <div class="accordion-group ">
+          <div class="accordion-heading">
+            <a class="accordion-toggle" data-toggle="collapse" data-parent="#accordion2" href="#collapseFour">
+              Bike
+            </a>
+          </div>
+          <div id="collapseFour" class="accordion-body collapse">
+            <div class="accordion-inner">
+              <div class="span4">
+                <img src="http://ironmanarizona.com/files/2010/09/Bike.jpg" alt="Bike Course Photo" height="250" width="350">
               </div>
-              <div id="collapseFive" class="accordion-body collapse">
-                <div class="accordion-inner">
-                  Anim pariatur cliche reprehenderit, enim eiusmod high life accusamus terry richardson ad squid. 3 wolf moon officia aute, non cupidatat skateboard dolor brunch. Food truck quinoa nesciunt laborum eiusmod. Brunch 3 wolf moon tempor, sunt aliqua put a bird on it squid single-origin coffee nulla assumenda shoreditch et. Nihil anim keffiyeh helvetica, craft beer labore wes anderson cred nesciunt sapiente ea proident. Ad vegan excepteur butcher vice lomo. Leggings occaecat craft beer farm-to-table, raw denim aesthetic synth nesciunt you probably haven't heard of them accusamus labore sustainable VHS.
-                </div>
+              <div class="span4">
+                <%= f.label :bikeTime, "Bike Time:" %>
+                <%= f.text_field :bikeTime, :class => "input-mini", :value => f.object.bikeTime.try(:strftime, "%H:%M:%S")  %>
+              </div>
+              <div class="span3">
+
               </div>
             </div>
+          </div>
+        </div>
 
-            <div class="accordion-group ">
-              <div class="accordion-heading">
-                <a class="accordion-toggle" data-toggle="collapse" data-parent="#accordion2" href="#collapseSix">
-                  Run
-                </a>
+        <div class="accordion-group ">
+          <div class="accordion-heading">
+            <a class="accordion-toggle" data-toggle="collapse" data-parent="#accordion2" href="#collapseFive">
+              Transition #2
+            </a>
+          </div>
+          <div id="collapseFive" class="accordion-body collapse">
+            <div class="accordion-inner">
+              Anim pariatur cliche reprehenderit, enim eiusmod high life accusamus terry richardson ad squid. 3 wolf moon officia aute, non cupidatat skateboard dolor brunch. Food truck quinoa nesciunt laborum eiusmod. Brunch 3 wolf moon tempor, sunt aliqua put a bird on it squid single-origin coffee nulla assumenda shoreditch et. Nihil anim keffiyeh helvetica, craft beer labore wes anderson cred nesciunt sapiente ea proident. Ad vegan excepteur butcher vice lomo. Leggings occaecat craft beer farm-to-table, raw denim aesthetic synth nesciunt you probably haven't heard of them accusamus labore sustainable VHS.
+            </div>
+          </div>
+        </div>
+
+        <div class="accordion-group ">
+          <div class="accordion-heading">
+            <a class="accordion-toggle" data-toggle="collapse" data-parent="#accordion2" href="#collapseSix">
+              Run
+            </a>
+          </div>
+          <div id="collapseSix" class="accordion-body collapse">
+            <div class="accordion-inner">
+              <div class="span4">
+                <img src="http://ironmanarizona.com/files/2010/09/Run.jpg" alt="Run Course Photo" height="250" width="350">
               </div>
-              <div id="collapseSix" class="accordion-body collapse">
-                <div class="accordion-inner">
-                  <img src="http://ironmanarizona.com/files/2010/09/Run.jpg" alt="Run Course Photo" height="250" width="350">
-                  <input type="text" class="input-mini" id="run_Time-Input">
-                </div>
+              <div class="span4">
+                <%= f.label :runTime, "Run Time:" %>
+                <%= f.text_field :runTime, :class => "input-mini", :value => f.object.runTime.try(:strftime, "%H:%M:%S")  %>             
+              </div>
+              <div class="span3">
+
               </div>
             </div>
           </div>
         </div>
       </div>
+    </div>
+  </div>
+
+
+
+
+  
+  
+
+
+
+
 
 <% end %>

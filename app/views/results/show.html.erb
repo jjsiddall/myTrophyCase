@@ -1,52 +1,46 @@
+<h1>Trophy</h1>
 <p id="notice"><%= notice %></p>
 
-<p>
-  <b>Racer Name:</b>
-  <%= @result.racerName %>
-</p>
-<p>
-  <b>Totaltime:</b>
-  <%= @result.totalTime %>
-</p>
+<div class="row">
+  <div class="span3">
+  
+    <dl class="dl-horizontal">
 
-<p>
-  <b>Bib:</b>
-  <%= @result.bib %>
-</p>
+      <dt>Racer Name:</dt>
+      <dd><%= @result.racerName %></dd>
+      
+      <dt>Bib:</dt>
+      <dd><%= @result.bib %></dd>
+      
+      <dt>Country:</dt>
+      <dd><%= @result.country %></dd>
+      
+      <dt>Division Rank:</dt>
+      <dd><%= @result.divisionRank %></dd>
 
-<p>
-  <b>Country:</b>
-  <%= @result.country %>
-</p>
+      <dt>Overall Rank:</dt>
+      <dd><%= @result.overallRank %></dd>
 
-<p>
-  <b>Divisionrank:</b>
-  <%= @result.divisionRank %>
-</p>
+      <hr>
 
-<p>
-  <b>Overallrank:</b>
-  <%= @result.overallRank %>
-</p>
+      <dt>Swim Time:</dt>
+      <dd><%= @result.swimTime.try(:strftime, "%H:%M:%S") %></dd>
 
-<p>
-  <b>Swimtime:</b>
-  <%= @result.swimTime %>
-</p>
+      <dt>Bike Time:</dt>
+      <dd><%= @result.bikeTime.try(:strftime, "%H:%M:%S") %></dd>
 
-<p>
-  <b>Biketime:</b>
-  <%= @result.bikeTime %>
-</p>
+      <dt>Run Time:</dt>
+      <dd><u><%= @result.runTime.try(:strftime, "%H:%M:%S") %></u></dd>
 
-<p>
-  <b>Runtime:</b>
-  <%= @result.runTime %>
-</p>
+      <dt>Total Time:</dt>
+      <dd><%= @result.totalTime.try(:strftime, "%H:%M:%S") %></dd>
+    </dl>
 
-
-<%= link_to 'Edit', edit_result_path(@result) %> |
-<%= link_to 'Back', results_path %>
-
-
-
+    <div class="form-actions">
+      <%= link_to 'Show', results_path, :class => 'btn'  %>
+      <%= link_to 'Edit', edit_result_path(@result), :class => 'btn' %>
+      <%= link_to 'Delete', result_path(@result), :method => 'delete', :confirm => 'Are you sure?', :class => 'btn btn-danger' %>
+    </div>
+  </div>
+</div>
+  
