@@ -28,6 +28,9 @@
         <!-- Country is hidden as due to the sprite flag shown in its place -->
         <%= f.hidden_field :country %>
 
+        <!-- user id added to associate the result with a user (i think) -->        
+        <%= f.hidden_field :user_id, :value => session[:user_id] %>
+
         <%= f.label :racerName, "Racer:" %>
         <%= f.text_field :racerName, :class => "input-large", :data => { :provide => 'typeahead', :items => '8'}, :size => nil  %>    
         <%= f.label :bib, "Bib #:" %>

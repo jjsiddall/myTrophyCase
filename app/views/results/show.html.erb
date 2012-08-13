@@ -37,7 +37,7 @@
     </dl>
 
     <div class="form-actions">
-      <%= link_to 'Show', results_path, :class => 'btn'  %>
+      <%= link_to 'Show', user_path(session[:user_id]), :class => 'btn'  %>
       <%= link_to 'Edit', edit_result_path(@result), :class => 'btn' %>
       <%= link_to 'Delete', result_path(@result), :method => 'delete', :confirm => 'Are you sure?', :class => 'btn btn-danger' %>
     </div>

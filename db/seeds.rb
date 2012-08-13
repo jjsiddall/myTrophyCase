@@ -3,11 +3,17 @@
 # Do not hesitate to tweak this to your needs
 
 Result.create([
-  { :racerName => "Johnson, Rob", :bib => 15, :country => "GBR", :divisionRank => 21, :overallRank => 22, :created_at => "2012-08-12 01:23:53", :updated_at => "2012-08-12 01:23:53", :totalTime => "2000-01-01 09:03:57", :swimTime => "2000-01-01 00:52:59", :bikeTime => "2000-01-01 04:53:48", :runTime => "2000-01-01 03:11:55" },
-  { :racerName => "Siddall, John", :bib => 276, :country => "USA", :divisionRank => 142, :overallRank => 1207, :created_at => "2012-08-12 02:12:40", :updated_at => "2012-08-12 02:12:40", :totalTime => "2000-01-01 12:53:48", :swimTime => "2000-01-01 01:23:08", :bikeTime => "2000-01-01 06:35:41", :runTime => "2000-01-01 04:37:41" },
-  { :racerName => "Sørensen-markovic, Aleksandar", :bib => 20, :country => "DNK", :divisionRank => 20, :overallRank => 21, :created_at => "2012-08-12 02:13:50", :updated_at => "2012-08-12 02:13:50", :totalTime => "2000-01-01 09:02:54", :swimTime => "2000-01-01 00:52:38", :bikeTime => "2000-01-01 04:57:04", :runTime => "2000-01-01 03:08:43" },
-  { :racerName => "Aas, Ted", :bib => 49, :country => "SWE", :divisionRank => 23, :overallRank => 24, :created_at => "2012-08-12 02:14:16", :updated_at => "2012-08-12 02:14:16", :totalTime => "2000-01-01 09:08:00", :swimTime => "2000-01-01 00:52:33", :bikeTime => "2000-01-01 04:49:15", :runTime => "2000-01-01 03:21:49" },
-  { :racerName => "Orrach, George", :bib => 1069, :country => "USA", :divisionRank => 221, :overallRank => 1050, :created_at => "2012-08-12 02:17:05", :updated_at => "2012-08-12 02:17:05", :totalTime => "2000-01-01 12:32:25", :swimTime => "2000-01-01 01:16:56", :bikeTime => "2000-01-01 05:38:59", :runTime => "2000-01-01 05:21:53" }
+  { :racerName => "Ufret, German", :bib => 749, :country => "PRI", :divisionRank => 147, :overallRank => 727, :created_at => "2012-08-13 04:10:47", :updated_at => "2012-08-13 04:10:47", :totalTime => "2000-01-01 11:44:24", :swimTime => "2000-01-01 01:13:14", :bikeTime => "2000-01-01 05:46:44", :runTime => "2000-01-01 04:31:57", :user_id => 3 },
+  { :racerName => "Hyre, Richard", :bib => 2011, :country => "USA", :divisionRank => 13, :overallRank => 1479, :created_at => "2012-08-13 04:11:02", :updated_at => "2012-08-13 04:11:02", :totalTime => "2000-01-01 13:38:57", :swimTime => "2000-01-01 01:09:57", :bikeTime => "2000-01-01 05:31:23", :runTime => "2000-01-01 06:43:09", :user_id => 3 }
+], :without_protection => true )
+
+
+
+User.create([
+  { :email => "jacobsiddall@gmail.com", :password_digest => "$2a$10$tEWLHZRVSqKEa8xkVPHNiOhBOX/cMCcj0NfG2xgTNflybqujLDLJa", :created_at => "2012-08-12 05:25:08", :updated_at => "2012-08-12 05:25:08" },
+  { :email => "j", :password_digest => "$2a$10$NiaH9fXaiDQiGNEu0mZrj./I097FHJbwEAOUcqNHNlaBU9M4p86le", :created_at => "2012-08-12 05:28:12", :updated_at => "2012-08-12 05:28:12" },
+  { :email => "g", :password_digest => "$2a$10$MGU0MwsebcFcDQ0eCNGWmOiS/uHMTq2FhgeCGECkI.UHqtMsl10U2", :created_at => "2012-08-12 05:32:41", :updated_at => "2012-08-12 05:32:41" },
+  { :email => "h", :password_digest => "$2a$10$qYN65WbrkFNvaRqlqynDyOmF4s2eFNcMpxhy0oG7wYtFvm/Z45hGK", :created_at => "2012-08-12 06:05:35", :updated_at => "2012-08-12 06:05:35" }
 ], :without_protection => true )
 
 
