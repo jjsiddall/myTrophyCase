@@ -12,9 +12,8 @@ $(function() {
 
   });
 
-  // $('#result_racerName').change( function() {
-  //     console.log($('#result_racerName').val() + " change"); //.match("((.*?))")[1]);
-  // });
+  //used for trophy set up - drag 'em around and drop'em where ever
+  $( ".draggable" ).draggable({ containment: ".trophyHolder", snap: ".ui-widget-header", snapMode: "inner" });
 
   $('#result_racerName').bind("change keypress keyup", function(event){
   

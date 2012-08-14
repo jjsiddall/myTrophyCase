@@ -2,13 +2,15 @@
 /************************************************************
         This is use for the Flags (associated with country)
 *************************************************************/
-.trophy{
-    width: 50px;
-    height: 50px;
-    margin-bottom: 9px;
-    border: none;
-    background:url(trophy.png) no-repeat;    
-}
+.draggable { 
+  width: 70px; 
+  height: 80px; 
+  float: left; 
+  margin: 0 10px 10px 0; 
+  font-size: .9em;
+   }
+.ui-widget-header p, .ui-widget-content p { margin: 0; }
+#snaptarget { height: 80px; border:1px solid #ccc;}
 
 .hideMe {
     visibility: hidden
