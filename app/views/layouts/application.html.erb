@@ -37,9 +37,30 @@
             		<span class="icon-bar"></span>
           		</a>
           
-<!--TODO: right now going to the builder page, but need to eventually change this -->
-          		<a class="brand" href="builder.html">LeapTrax</a>
-          
+          		<a class="brand" href=#>LeapTrax</a>
+
+<!-- button used for login/logout -->
+              
+              <% if current_user %>                
+                <div class="btn-group pull-right">  
+                  <a class="btn dropdown-toggle" data-toggle="dropdown" href="#">
+                    <i class="icon-user"></i> <%= current_user.email %>
+                    <span class="caret"></span>
+                  </a>
+                  <ul class="dropdown-menu">
+                    <li><%= link_to "Profile", user_url(current_user.id) %></li>
+                    <li class="divider"></li>
+                    <li><%= link_to "Log Out", logout_path %></li>
+                  </ul>
+                </div>  
+              <% else %>
+                <ul class="nav pull-right">
+                  <li><%= link_to "Sign Up", signup_path %> </li>
+                  <li><%= link_to "Log In", login_path %> </li>
+                </ul>
+              <% end %>
+
+              
           		<div class="nav-collapse">
               		<ul class="nav">
                 		<li>
@@ -51,16 +72,8 @@
                     <!-- <li class="active"><a href="RaceReport.html">Claim</a></li> -->
                 		<li>
                       <a href="#contact">View</a>
-                    </li>
-                		<li><button type="submit" class="btn pull-right" id="test-Button">Test-Env</button></li>
-                    
-                    <% if current_user %>
-                      <li><%= link_to current_user.email, current_user.email %></li>
-                      <li><%= link_to "Log Out", logout_path %></li>
-                    <% else %>
-                      <li><%= link_to "Sign Up", signup_path %> </li>
-                      <li><%= link_to "Log In", login_path %> </li>
-                    <% end %>
+                    </li>                    
+
                   </ul>
             	</div><!--/.nav-collapse -->
       	   </div>

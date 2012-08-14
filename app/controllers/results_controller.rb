@@ -3,6 +3,8 @@ class ResultsController < ApplicationController
   # GET /results
   # GET /results.json
   def index
+    #@user = User.find( params[:user_id])
+    #@results = @user.results
     @results = Result.all
     
     respond_to do |format|

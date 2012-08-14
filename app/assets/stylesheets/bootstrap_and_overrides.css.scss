@@ -2,4 +2,5 @@
 body { padding-top: 60px; }
 @import "bootstrap-responsive";
 
-@iconS
+$iconSpritePath: asset-url("glyphicons-halflings.png", image) !default;
+$iconWhiteSpritePath: asset-url('glyphicons-halflings-white.png', image);

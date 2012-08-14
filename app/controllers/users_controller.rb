@@ -6,7 +6,7 @@ class UsersController < ApplicationController
   	@user = User.new(params[:user])
   	if @user.save
       session[:user_id] = @user.id
-  		redirect_to root_url, notice: "Signed up!"
+  		redirect_to user_url(@user.id), notice: "Welcome to My Trophy Case"
   	else
   		render "new"
   	end
