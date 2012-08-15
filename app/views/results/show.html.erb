@@ -12,7 +12,7 @@
       <dd><%= @result.bib %></dd>
       
       <dt>Country:</dt>
-      <dd><%= image_tag("", :class => "flag flag-#{@result.country} showMe", :alt => "Country Flag")%></dd>
+      <dd><div class="flag flag-<%= @result.country %> showMe"></div></dd>
       
       <dt>Division Rank:</dt>
       <dd><%= @result.divisionRank %></dd>

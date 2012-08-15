@@ -23,7 +23,7 @@
         <%else %>
           <% countryClass = "flag flag-#{f.object.country} showMe" %>
         <%end %>
-        <%= image_tag("flags.png", :class => countryClass, :alt => "Country Flag")%>
+        <div class="span1"><div class="<%= countryClass %>"></div></div>
 
         <!-- Country is hidden as due to the sprite flag shown in its place -->
         <%= f.hidden_field :country %>
@@ -32,7 +32,7 @@
         <%= f.hidden_field :user_id, :value => session[:user_id] %>
 
         <%= f.label :racerName, "Racer:" %>
-        <%= f.text_field :racerName, :class => "input-large", :data => { :provide => 'typeahead', :items => '8'}, :size => nil  %>    
+        <%= f.text_field :racerName, :class => "input-large", :data => { :provide => 'typeahead', :items => '8'}, :size => nil, :autocomplete => :off %>    
         <%= f.label :bib, "Bib #:" %>
         <%= f.text_field :bib, :class => "input-mini", :size => nil %>
         <%= f.label :totalTime, "Time:" %>

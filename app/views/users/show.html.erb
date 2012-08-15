@@ -1,3 +1,4 @@
+<% tab "view" %>
 <h2>My Profile</h2>
 
 <p>
@@ -5,7 +6,7 @@
   <%= @user.email %>
 </p>
 <p>
-  <b><%= image_tag("flags.png", :class => "flag flag-#{@user.results[0].try(:country)} showMe", :alt => "Country Flag")%></b>
+  <b><div class="flag flag-<%=@user.results[0].try(:country)%> showMe"></div></b>
 </p>
 
 <div class="row">

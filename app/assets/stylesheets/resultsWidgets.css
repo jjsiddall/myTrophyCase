@@ -23,7 +23,7 @@
 .flag {
 	width: 25px;
 	height: 15px;
-	margin-bottom: 9px;
+	margin-top: 3px;
 	border: none;
 	background:url(flags.png) no-repeat;
 }
