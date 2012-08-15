@@ -23,7 +23,7 @@
         <%else %>
           <% countryClass = "flag flag-#{f.object.country} showMe" %>
         <%end %>
-        <%= image_tag("", :class => countryClass, :alt => "Country Flag")%>
+        <%= image_tag("flags.png", :class => countryClass, :alt => "Country Flag")%>
 
         <!-- Country is hidden as due to the sprite flag shown in its place -->
         <%= f.hidden_field :country %>
