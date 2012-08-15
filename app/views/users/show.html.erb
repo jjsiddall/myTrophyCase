@@ -5,7 +5,7 @@
   <%= @user.email %>
 </p>
 <p>
-  <b><%= image_tag("", :class => "flag flag-#{@user.results[0].try(:country)} showMe", :alt => "Country Flag")%></b>
+  <b><%= image_tag("flags.png", :class => "flag flag-#{@user.results[0].try(:country)} showMe", :alt => "Country Flag")%></b>
 </p>
 
 <div class="row">
