@@ -85,14 +85,17 @@
                       </li>                    
                     <% end %>
 
-                    <% if @page_tab == "view" %>
-                      <li class="active">
-                        <%= link_to '<i class="icon-eye-open icon-white"></i> View'.html_safe, user_path(session[:user_id]) %>
-                      </li>
-                    <% else %>
-                      <li>
-                        <%= link_to 'View', user_path(session[:user_id]) %>
-                      </li>                    
+                    <% if current_user %>
+
+                      <% if @page_tab == "view" %>
+                        <li class="active">
+                          <%= link_to '<i class="icon-eye-open icon-white"></i> View'.html_safe, user_path(session[:user_id]) %>
+                        </li>
+                      <% else %>
+                        <li>
+                          <%= link_to 'View', user_path(session[:user_id]) %>
+                        </li>                    
+                      <% end %>
                     <% end %>
 
 
