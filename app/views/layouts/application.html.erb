@@ -65,27 +65,17 @@
 
           		<div class="nav-collapse">
               		<ul class="nav">
-                    <% if @page_tab == "search" %>
-                		  <li class="active">
-                        <%= link_to '<i class="icon-search icon-white"></i> Search'.html_safe, new_result_path  %>
-                      </li>
-                    <% else %>
-                      <li>
-                        <%= link_to 'Search', new_result_path %>
-                      </li>                    
-                    <% end %>
-
-                    <% if @page_tab == "claim" %>
-                      <li class="active">
-                        <%= link_to '<i class="icon-folder-open icon-white"></i> Claim'.html_safe, results_path %>
-                      </li>
-                    <% else %>
-                      <li>
-                        <%= link_to 'Claim', results_path %>
-                      </li>                    
-                    <% end %>
-
                     <% if current_user %>
+                      <% if @page_tab == "search" %>
+                  		  <li class="active">
+                          <%= link_to '<i class="icon-search icon-white"></i> Search'.html_safe, new_user_result_path(current_user)  %>
+                        </li>
+                      <% else %>
+                        <li>
+                          <%= link_to 'Search', new_user_result_path(current_user) %>
+                        </li>                    
+                      <% end %>
+
 
                       <% if @page_tab == "view" %>
                         <li class="active">
