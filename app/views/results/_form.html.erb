@@ -1,5 +1,5 @@
 <title>"test"</title>
-<%= form_for(@result) do |f| %>
+<%= form_for [current_user, @result] do |f| %>
 
   <% if @result.errors.any? %>
     <div id="error_explanation">
@@ -41,7 +41,7 @@
         <%= f.text_field :divisionRank, :class => "input-mini" %>
         <%= f.label :overallRank, "Overall:" %>
         <%= f.text_field :overallRank, :class => "input-mini" %>
-        <%= f.submit "Add Race Result", :class => "btn btn-primary pull-right" %>
+        <%= f.submit @AddOrEditButton, :class => "btn btn-primary pull-right" %>
       </div>
     </div>
   </div>

@@ -3,11 +3,12 @@ MyTrophyCase::Application.routes.draw do
   get 'login', to: 'sessions#new', as: 'login'
   get 'logout', to: 'sessions#destroy', as: 'logout'
 
-  root :to => "results#index"
+  root :to => "sessions#new"
   
   resources :sessions
-  resources :users
-  resources :results
-
+  
+  resources :users do
+  	resources :results
+  end
 
 end
