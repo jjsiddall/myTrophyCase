@@ -1,9 +1,8 @@
-$("#new_race_tr").before("<%= escape_javascript(render('race', :race => @race)) %>");
+$("#new_race_tr").before("<%= escape_javascript(render('race', :zebra => @race)) %>");
 
 $("#race_<%= @race.id %>").css("display", "none");
 $("#race_<%= @race.id %>").slideToggle();
 
-$("#race_race_name").val("");
 $("#race_race_name").val("");
 $("#race_race_type").val("");
 $("#race_distance").val("");

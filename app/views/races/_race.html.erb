@@ -1,14 +1,16 @@
-<tr id="race_<%= race.id %>">
-  <td><%= race.race_name %></td>
-  <td><%= race.race_type %></td>
-  <td><%= race.distance %></td>
-  <td><%= race.year %></td>
-  <td><%= race.race_id %></td>
-  <td><%= race.city %></td>       
-  <td><%= race.state %></td>
-  <td><%= race.country %></td>         
+<tr id="race_<%= zebra.id %>">
+  <td><%= zebra.race_name %></td>
+  <td><%= zebra.race_type %></td>
+  <td><%= zebra.distance %></td>
 
-  <td><%= link_to 'Edit', edit_race_url(race.id), :class => "btn", :remote => true %></td>
-  <td><%= link_to 'Destroy', race, :class => "btn btn-danger", :method => :delete, :remote => true %></td>
+  <td><%= zebra.year %></td>
+  <td><%= zebra.race_id %></td>
 
+  <td><%= zebra.city %></td>
+  <td><%= zebra.state %></td>
+  <td><%= zebra.country %></td>
+
+  <td><%= link_to('Delete', race_url(zebra.id), :method => 'delete', :remote => true, :class => "btn") %></td>
+  <td><%= link_to('ID',edit_race_url(zebra.id), :remote => true, :class => "btn") %></td>
+  <td><%= link_to('Edit',edit_race_url(zebra.id), :class => "btn") %></td>
 </tr>

@@ -1,1 +1,1 @@
-$("#race_<%= @race.id %>").replaceWith("<tr id='edit_race_<%= @race.id %>'><%= j(render('form')) %></tr>");
+$("#<%= dom_id @race %>").replaceWith("<%= j(render('form')) %>");
