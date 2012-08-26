@@ -2,14 +2,9 @@ var globalRacersObject = new Object();
 
 // this function will run as soon as javascript is ready
 $(function() {
-    
-
-	$('#test-Button').on('click', function() {
-      var deleteme = "Jake Siddall (267) - 11:11:11"
-      console.log(deleteme)
-      
-      console.log(deleteme.match(/\((.*?)\)/)[1]);
-
+  $("#fetchIronmanRaces").on('click', function() {
+    findIronmanRaces();
+    console.log("called fetch")
   });
 
   //used for trophy set up - drag 'em around and drop'em where ever
@@ -148,4 +143,123 @@ function populateGeneralRaceData(racer){
   $("#result_swimTime").val(racer.swimTime)
   $("#result_bikeTime").val(racer.bikeTime)
   $("#result_runTime").val(racer.runTime)
+}
+
+function findIronmanRaces(){
+  var container = $('#target');
+  
+  var url = "http://ironman.com/results"
+
+  console.log("fetching " + url);
+
+    //YQL allows me to get the website as a JSON and then I can parse it
+    $.getJSON("http://query.yahooapis.com/v1/public/yql?"+  
+              "q=select%20*%20from%20html%20where%20url%3D%22"+
+              encodeURIComponent(url)+
+              "%22&format=xml'&callback=?",
+      function(data){
+        if(data.results[0]){
+
+//TODO: get some a Pub/Sub model working here  (massive refactoring needed...)
+          //filterForNamesArray(data.results[0]);
+          
+          pullInIronmanRaceData(data.results[0])
+
+          //container.html(data);
+        } else {
+          var errormsg = '<p>Error: could not load the page.</p>';
+          container.html(errormsg);
+        }
+      }
+    );
+}
+
+
+// This function is used to find Ironman races and populate an Array with "race" objects that have: Race Name, Race URL, and URLs to each of the results sets for that race
+function pullInIronmanRaceData(data){
+  var checkCounter = 0;
+
+  var races = new Array(); //this is what we will hold all the race data in
+  
+  var racesString = data.replace(/['"]/g,''); //.replace(/»/g, '').replace(/\./g, '').replace(/\|/g, '');
+
+//  racesString = data.replace(/\s+/g, '').replace(/<\/td>/g, '').replace(/class=\"right\"/g, '');//take out white space and end of table data tags
+  var racesArray = racesString.split('inline '); //split up array based on races only and remove first item (as it contains nothing useful)
+  racesArray.shift();  
+  //console.log(racesArray)
+  
+
+
+  //we have an array of races as a string of info and we need to break it into usable pieces  
+
+  var iLen=racesArray.length;
+  for(var i=0; i<iLen; i++) { //take the array and pull out only the names and the href associated with it
+    if (i%2 === 0) 
+    {
+      //console.log("Race Name: " + checkCounter + " " + racesArray[i].split('alt=')[1].split(' Logo')[0]); // Here I am collecting Race Names
+      checkCounter = checkCounter + 1
+      var raceName = racesArray[i].split('alt=')[1].split(' Logo')[0]  //*****put this into Race Object!
+    }
+    else
+    {
+      //racesArray[i] = racesArray[i].replace(/\s+/g, ''); //take all the white space out of that section of the array
+      if (racesArray[i].indexOf("Go to tracker »") > -1)//check to see if there are results available for this race
+      {
+        racesArray[i] = racesArray[i].split("<tbody>");
+        
+        //pulls out the offical race URL
+        var raceURL = racesArray[i][0].split("<a href=")[1].split(" title")[0] //*****put this into Race Object!
+        //console.log(raceURL)
+
+        racesArray[i] = racesArray[i][1].split("<a href=");
+
+        var raceYearURLs = new Array();
+        var jLen=racesArray[i].length;
+        for(var j=0; j<jLen; j++) {
+           // racesArray[i] = racesArray[i][j].split("Go to tracker »");
+          if (racesArray[i][j].indexOf("Go to tracker »") > -1){
+            raceYearURLs.push(racesArray[i][j].split(" title")[0])
+          }
+        }
+
+      }
+      else
+      {
+        racesArray[i] = ""
+      }
+      var race = new Object(); //this is what we will hold all the race data in
+      race.raceName = raceName;
+      race.url = raceURL;
+      race.results = raceYearURLs
+      races.push(race);    
+    }
+    
+  }
+  console.log(races) 
+  
+  var kLen=races.length;
+  for(var k=0; k<kLen; k++) 
+  {
+    if(races[k].results != undefined){
+      var htmlRaceName = '<td>'+ races[k].raceName +'</td>'
+      var htmlRaceType = '<td>Tri</td>';
+      if(htmlRaceName.indexOf("70.3") > -1){
+        var htmlRaceDistance = '<td>70.3</td>'
+      }
+      else
+      {
+        var htmlRaceDistance = '<td>140.6</td>'
+      }
+      var resultsArray = races[k].results;
+      var mLen=resultsArray.length;
+      for(var m=0; m<mLen; m++) 
+      {
+        var htmlYear = '<td>'+resultsArray[m].substr(resultsArray[m].length-4)+'</td>'
+
+        $('#racesTable tr:last').after('<tr>'+htmlRaceName+htmlRaceType+htmlRaceDistance+htmlYear+'<td></td><td></td><td></td><td></td></tr> '
+        );
+      }
+    }
+  }
+
 }

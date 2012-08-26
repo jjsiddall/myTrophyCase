@@ -1,0 +1,20 @@
+
+
+
+<%= form_for(@race, :remote => true) do |f| %>
+  <!-- <div class="form-inline"> -->
+  <td><%= f.text_field :race_name, :class => " input-mini", :size=> nil %></td>
+  <td><%= f.text_field :race_type, :class => " input-mini", :size=> nil %></td>
+  <td><%= f.text_field :distance, :class => " input-mini", :size=> nil %></td>
+  <td><%= f.text_field :year, :class => " input-mini", :size=> nil %></td>
+  <td><%= f.text_field :race_id, :class => " input-mini", :size=> nil %></td>
+
+  <td><%= f.text_field :city, :class => " input-mini", :size=> nil  %></td>
+  <td><%= f.text_field :state, :class => " input-mini", :size=> nil %></td>
+  <td><%= f.text_field :country, :class => " input-mini", :size=> nil %></td>
+  
+  <td></td>
+  
+  <td><%= f.submit "Add Race", :class => "btn btn-primary" %></td>
+  <!-- </div>  -->
+<% end %>

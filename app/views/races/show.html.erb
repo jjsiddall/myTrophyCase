@@ -1,0 +1,44 @@
+<p id="notice"><%= notice %></p>
+
+<p>
+  <b>City:</b>
+  <%= @race.city %>
+</p>
+
+<p>
+  <b>State:</b>
+  <%= @race.state %>
+</p>
+
+<p>
+  <b>Country:</b>
+  <%= @race.country %>
+</p>
+
+<p>
+  <b>Distance:</b>
+  <%= @race.distance %>
+</p>
+
+<p>
+  <b>Race type:</b>
+  <%= @race.race_type %>
+</p>
+
+<p>
+  <b>Race name:</b>
+  <%= @race.race_name %>
+</p>
+
+<p>
+  <b>Race ID:</b>
+  <%= @race.race_id %>
+</p>
+
+<p>
+  <b>Race Year:</b>
+  <%= @race.year %>
+</p>
+
+<%= link_to 'Edit', edit_race_path(@race) %> |
+<%= link_to 'Back', races_path %>

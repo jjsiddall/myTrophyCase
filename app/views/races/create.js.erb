@@ -1,0 +1,14 @@
+$("#new_race_tr").before("<%= escape_javascript(render('race', :race => @race)) %>");
+
+$("#race_<%= @race.id %>").css("display", "none");
+$("#race_<%= @race.id %>").slideToggle();
+
+$("#race_race_name").val("");
+$("#race_race_name").val("");
+$("#race_race_type").val("");
+$("#race_distance").val("");
+$("#race_year").val("");
+$("#race_race_id").val("");
+$("#race_city").val("");       
+$("#race_state").val("");
+$("#race_country").val("");   

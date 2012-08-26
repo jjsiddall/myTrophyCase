@@ -1,0 +1,14 @@
+<tr id="race_<%= race.id %>">
+  <td><%= race.race_name %></td>
+  <td><%= race.race_type %></td>
+  <td><%= race.distance %></td>
+  <td><%= race.year %></td>
+  <td><%= race.race_id %></td>
+  <td><%= race.city %></td>       
+  <td><%= race.state %></td>
+  <td><%= race.country %></td>         
+
+  <td><%= link_to 'Edit', edit_race_url(race.id), :class => "btn", :remote => true %></td>
+  <td><%= link_to 'Destroy', race, :class => "btn btn-danger", :method => :delete, :remote => true %></td>
+
+</tr>
