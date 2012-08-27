@@ -7,6 +7,14 @@ $(function() {
     console.log("called fetch")
   });
 
+  $("#testButton").on('click', function(){
+     var submitForm = document.createElement("FORM");
+
+     submitForm.action="/races";
+     submitForm.method="post";
+     $('#racesTable').before(submitForm);     
+  });
+
   //used for trophy set up - drag 'em around and drop'em where ever
   $( ".draggable" ).draggable({ containment: ".trophyHolder", snap: ".ui-widget-header", snapMode: "inner" });
 
@@ -241,25 +249,69 @@ function pullInIronmanRaceData(data){
   for(var k=0; k<kLen; k++) 
   {
     if(races[k].results != undefined){
-      var htmlRaceName = '<td>'+ races[k].raceName +'</td>'
-      var htmlRaceType = '<td>Tri</td>';
+      var htmlRaceName = '"'+races[k].raceName + '"';
+      var htmlRaceType = 'Tri';
       if(htmlRaceName.indexOf("70.3") > -1){
-        var htmlRaceDistance = '<td>70.3</td>'
+        var htmlRaceDistance = '70.3';
       }
       else
       {
-        var htmlRaceDistance = '<td>140.6</td>'
+        var htmlRaceDistance = '140.6';
       }
       var resultsArray = races[k].results;
       var mLen=resultsArray.length;
       for(var m=0; m<mLen; m++) 
       {
-        var htmlYear = '<td>'+resultsArray[m].substr(resultsArray[m].length-4)+'</td>'
+        var htmlYear = resultsArray[m].substr(resultsArray[m].length-4);
 
-        $('#racesTable tr:last').after('<tr>'+htmlRaceName+htmlRaceType+htmlRaceDistance+htmlYear+'<td></td><td></td><td></td><td></td></tr> '
-        );
+       var submitForm = document.createElement("FORM");
+
+       submitForm.action="/races";
+       submitForm.method="post";
+       $('#racesTable').before(submitForm);    
+
+        $('#racesTable tbody').after('<tr>' +
+
+        // $('#racesTable tbody').after('<tr>' +
+        //     '<form accept-charset="UTF-8" action="/races" class="form-inline" data-remote="true" id="new_race" method="post">' +
+        //       '<td><input id="race_race_name" name="race[race_name]" type="text" value='+htmlRaceName+' ></td>' +
+        //       '<td><input class="input-mini" id="race_race_type" name="race[race_type]" type="text" value='+htmlRaceType+' ></td>' +
+        //       '<td><input class="input-mini" id="race_distance" name="race[distance]" type="text" value=' + htmlRaceDistance + ' ></td>' +
+        //       '<td><input class="input-mini" id="race_year" name="race[year]" type="text" value=' + htmlYear + ' ></td>' +
+        //       '<td></td>' +
+        //       '<td></td>' +
+        //       '<td></td>' +
+        //       '<td></td>' +
+        //       '<td><input class="btn" name="commit" type="submit" value="Add"></td>' +
+        //       '<td></td>' +
+        //       '<td></td>' +
+        //     '</form>' +
+        //   '</tr>'
+        // );
       }
     }
   }
-
 }
+
+function post_to_url(path, params, method) {
+    method = method || "post"; // Set method to post by default, if not specified.
+
+    // The rest of this code assumes you are not using a library.
+    // It can be made less wordy if you use one.
+    var form = document.createElement("form");
+    form.setAttribute("method", method);
+    form.setAttribute("action", path);
+
+    for(var key in params) {
+        if(params.hasOwnProperty(key)) {
+            var hiddenField = document.createElement("input");
+            hiddenField.setAttribute("type", "hidden");
+            hiddenField.setAttribute("name", key);
+            hiddenField.setAttribute("value", params[key]);
+
+            form.appendChild(hiddenField);
+         }
+    }
+
+    document.body.appendChild(form);
+    form.submit();

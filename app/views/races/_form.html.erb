@@ -1,6 +1,6 @@
 <%= form_for(@race, :remote => true, :html => { :class => "form-inline"}) do |f| %>
 	
-  <% if @race.new_record? %>
+  <% if fullEdit %>
 
     <td><%= f.text_field :race_name, :class => "input-mini", :placeholder => "Name" %></td>
     <td><%= f.text_field :race_type, :class => "input-mini", :placeholder => "Type" %></td>
@@ -8,11 +8,12 @@
     <td><%= f.text_field :year, :class => "input-mini", :placeholder => "Year" %></td>
     <td><%= f.text_field :race_id, :class => "input-mini", :placeholder => "ID" %></td>
 
-	<td><%= f.text_field :city, :class => "input-mini", :placeholder => "City" %></td>
-	<td><%= f.text_field :state, :class => "input-mini", :placeholder => "State" %></td>
+	  <td><%= f.text_field :city, :class => "input-mini", :placeholder => "City" %></td>
+	  <td><%= f.text_field :state, :class => "input-mini", :placeholder => "State" %></td>
     <td><%= f.text_field :country, :class => "input-mini", :placeholder => "Country"  %></td>
 
     <td><%= f.submit "Add", :class => "btn" %></td>
+    <td></td>
     <td></td>
   <% else %>
 
