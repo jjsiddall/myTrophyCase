@@ -3,8 +3,8 @@ var globalRacersObject = new Object();
 // this function will run as soon as javascript is ready
 $(function() {
   $("#fetchIronmanRaces").on('click', function() {
-    findIronmanRaces();
-    console.log("called fetch")
+    var savedRaces = getSavedRaces();
+    findIronmanRaces(savedRaces);
   });
 
   $("#testButton").on('click', function(){
@@ -43,9 +43,7 @@ $(function() {
         populateGeneralRaceData(globalRacersObject[isMatchArray[1]]);
       }
 
-      // if ($('#result_racerName').val().match("((.*?))")[1] != "") {
-      //   console.log("found a bib")
-      // }
+
    });
 
 }); 
@@ -55,7 +53,6 @@ function getPageDataYQL(firstLetter){
   
   var url = "http://tracking.ironmanlive.com/newsearch.php?rid=175&letter=" + firstLetter //the is the website I want to pull from
 
-  console.log(url);
 
     //YQL allows me to get the website as a JSON and then I can parse it
     $.getJSON("http://query.yahooapis.com/v1/public/yql?"+  
@@ -121,8 +118,7 @@ function filterForNamesArray(data){
   //update the "bootstrap typeahead" with racer names and bib#s
   var autocomplete = $('#result_racerName').typeahead();
   autocomplete.data('typeahead').source = namesArray;
-  
-  console.log(racers)
+
   //now going to return the hash of "racer" objects back
   return racers;
 }
@@ -144,7 +140,6 @@ function populateGeneralRaceData(racer){
   //populate the various textboxes with the basic stored values
 
   // var alpha3Country = new Locale("en", "US").getISO3Country();
-  // console.log(alpha3Country)
 
   $('#result_racerName').val(racer.lastName + ", " + racer.firstName)
   $("#result_totalTime").val(racer.totalTime)
@@ -161,7 +156,21 @@ function populateGeneralRaceData(racer){
   $("#result_runTime").val(racer.runTime)
 }
 
-function findIronmanRaces(){
+//find races that are currently loaded
+function getSavedRaces(){
+  var savedRace;
+  var savedRacesArray = Array();
+  $('#savedRacesTable tbody tr').each(function() {
+    savedRace = $(this).find("td").eq(3).find("a").attr('href');
+    if(savedRace != undefined){
+      savedRacesArray.push(savedRace);
+    }
+  });
+  return savedRacesArray;
+}
+
+
+function findIronmanRaces(savedRaces){
   var container = $('#target');
   
   var url = "http://ironman.com/results"
@@ -179,7 +188,7 @@ function findIronmanRaces(){
 //TODO: get some a Pub/Sub model working here  (massive refactoring needed...)
           //filterForNamesArray(data.results[0]);
           
-          pullInIronmanRaceData(data.results[0])
+          pullInIronmanRaceData(data.results[0], savedRaces)
 
           //container.html(data);
         } else {
@@ -192,9 +201,9 @@ function findIronmanRaces(){
 
 
 // This function is used to find Ironman races and populate an Array with "race" objects that have: Race Name, Race URL, and URLs to each of the results sets for that race
-function pullInIronmanRaceData(data){
+function pullInIronmanRaceData(data, savedRaces){
   var checkCounter = 0;
-
+  
   var races = new Array(); //this is what we will hold all the race data in
   
   var racesString = data.replace(/['"]/g,''); //.replace(/»/g, '').replace(/\./g, '').replace(/\|/g, '');
@@ -202,9 +211,6 @@ function pullInIronmanRaceData(data){
 //  racesString = data.replace(/\s+/g, '').replace(/<\/td>/g, '').replace(/class=\"right\"/g, '');//take out white space and end of table data tags
   var racesArray = racesString.split('inline '); //split up array based on races only and remove first item (as it contains nothing useful)
   racesArray.shift();  
-  //console.log(racesArray)
-  
-
 
   //we have an array of races as a string of info and we need to break it into usable pieces  
 
@@ -212,7 +218,6 @@ function pullInIronmanRaceData(data){
   for(var i=0; i<iLen; i++) { //take the array and pull out only the names and the href associated with it
     if (i%2 === 0) 
     {
-      //console.log("Race Name: " + checkCounter + " " + racesArray[i].split('alt=')[1].split(' Logo')[0]); // Here I am collecting Race Names
       checkCounter = checkCounter + 1
       var raceName = racesArray[i].split('alt=')[1].split(' Logo')[0]  //*****put this into Race Object!
       if (raceName.indexOf("Ironman Asia-Pacific Championship Melbourne") > -1){ raceName = "Ironman Asia-Pacific Championship Melbourne" }
@@ -227,8 +232,6 @@ function pullInIronmanRaceData(data){
         //pulls out the offical race URL
         var raceURL = racesArray[i][0].split("<a href=")[1].split(" title")[0] //*****put this into Race Object!
 
-        //console.log(raceURL)
-
         racesArray[i] = racesArray[i][1].split("<a href=");
 
         var raceYearURLs = new Array();
@@ -236,7 +239,14 @@ function pullInIronmanRaceData(data){
         for(var j=0; j<jLen; j++) {
            // racesArray[i] = racesArray[i][j].split("Go to tracker »");
           if (racesArray[i][j].indexOf("Go to tracker »") > -1){
-            raceYearURLs.push(racesArray[i][j].split(" title")[0].replace(/amp;/g, ''));
+            
+            raceYearURL = "http://ironman.com" + racesArray[i][j].split(" title")[0].replace(/amp;/g, '');
+            
+            console.log(raceYearURL);
+
+            if ($.inArray(raceYearURL, savedRaces) ===-1){            
+              raceYearURLs.push(raceYearURL);
+            }
           }
         }
 
@@ -245,11 +255,14 @@ function pullInIronmanRaceData(data){
       {
         racesArray[i] = ""
       }
-      var race = new Object(); //this is what we will hold all the race data in
-      race.raceName = raceName;
-      race.raceURL = raceURL;
-      race.results = raceYearURLs;
-      races.push(race);    
+
+
+        var race = new Object(); //this is what we will hold all the race data in
+        race.raceName = raceName;
+        race.raceURL = raceURL;
+        race.results = raceYearURLs;
+        races.push(race);
+
     }
     
   }
@@ -279,8 +292,8 @@ function pullInIronmanRaceData(data){
       for(var m=0; m<mLen; m++) 
       {
         var htmlYear = resultsArray[m].substr(resultsArray[m].length-4);
-        var htmlRaceResultYearURL = "http://ironman.com" + resultsArray[m];
-        console.log(htmlRaceResultYearURL);
+        var htmlRaceResultYearURL = resultsArray[m];
+
 
 //////////////////////////////////
 // Here I create a hidden form that I will use to submit new race info
@@ -344,7 +357,7 @@ function pullInIronmanRaceData(data){
 
         newRaceNumber = newRaceNumber+1;
         
-        $('#racesTable tbody').after('<tr>'+
+        $('#newRacesTable tbody').after('<tr>'+
             '<td><a href='+htmlraceURL+' target="_blank">'+htmlRaceName+'</a></td>' +
             '<td>'+htmlRaceType+'</td>' +
             '<td>'+htmlRaceDistance+'</td>' +
@@ -361,13 +374,14 @@ function pullInIronmanRaceData(data){
         $('#td_'+newRaceNumber).append(newRaceForm);
 
         var tableData = $('#td_'+newRaceNumber)
-        showPressed(tableData);            
+        showButtonHasBeenPressed(tableData);            
       }
     }
   }
+  $('#numberOfNewRaces').html(newRaceNumber);
 }
 
-function showPressed(tableDataCell){
+function showButtonHasBeenPressed(tableDataCell){
   tableDataCell.find(".btn").on('click', function() {
     tableDataCell.find(".btn").attr('class', "btn-success").attr('value', 'Added');
     tableDataCell.parent().slideUp();
