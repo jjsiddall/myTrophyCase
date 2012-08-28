@@ -1,9 +1,9 @@
 <tr id="race_<%= zebra.id %>">
-  <td><%= zebra.race_name %></td>
+  <td><%= link_to zebra.race_name, zebra.raceMainURL, :target => "_blank" %></td>
   <td><%= zebra.race_type %></td>
   <td><%= zebra.distance %></td>
 
-  <td><%= zebra.year %></td>
+  <td><%= link_to zebra.year, zebra.raceResultURL, :target => "_blank" %></td>
   <td><%= zebra.race_id %></td>
 
   <td><%= zebra.city %></td>
