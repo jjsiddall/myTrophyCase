@@ -10,7 +10,8 @@
   <td><%= zebra.state %></td>
   <td><%= zebra.country %></td>
 
-  <td><%= link_to('Delete', race_url(zebra.id), :method => 'delete', :remote => true, :class => "btn") %></td>
+
   <td><%= link_to('ID',edit_race_url(zebra.id), :remote => true, :class => "btn") %></td>
-  <td><%= link_to('Edit',edit_race_url(zebra.id), :class => "btn") %></td>
+  <td><%= link_to('Edit',edit_race_url(zebra.id), :class => "btn btn-inverse") %></td>
+  <td><%= link_to('Delete', race_url(zebra.id), :method => 'delete', :remote => true, :class => "btn btn-danger") %></td>
 </tr>

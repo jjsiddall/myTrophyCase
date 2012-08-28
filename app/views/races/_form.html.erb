@@ -12,14 +12,14 @@
 	  <td><%= f.text_field :state, :class => "input-mini", :placeholder => "State" %></td>
     <td><%= f.text_field :country, :class => "input-mini", :placeholder => "Country"  %></td>
 
-    <td><%= f.submit "Add", :class => "btn" %></td>
+    <td><%= f.submit "Add", :class => "btn btn-success" %></td>
     <td></td>
     <td></td>
   <% else %>
 
     <td><%= f.text_field :race_id, :class => "input-mini", :placeholder => "ID" %></td>
 
-    <td><%= f.submit "Chg ID", :class => "btn" %></td>
+    <td><%= f.submit "Chg ID", :class => "btn btn-inverse" %></td>
 
   <% end %>
 <% end %>
