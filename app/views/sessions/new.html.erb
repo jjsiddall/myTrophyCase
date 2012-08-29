@@ -1,15 +1,29 @@
-<h1>Log In</h1>
+<div class="row">
+  <div class="offset4 span4 well">
 
-<%= form_tag sessions_path do %>
-  <div class="field">
-  	<%= label_tag :email %><br>
-  	<%= text_field_tag :email %>
+	<%= form_tag sessions_path, :class => "form-horizontal" do %>
+		<legend>Log In</legend>
+	  	<div class="control-group">
+	  		<%= label_tag :email,"Email", :class =>"control-label" %>
+	  		<div class="controls">
+	  			<%= text_field_tag :email, "", :class => "span2", :placeholder =>"Email" %>
+	  		</div>
+	  	</div>
+	  	<div class="control-group">
+	  		<%= label_tag :password, "Password", :class =>"control-label" %>
+	  		<div class="controls">
+	  			<%= password_field_tag :password, "",:class => "span2", :placeholder =>"Password" %>
+	  		</div>
+	  	</div>
+	    <div class="control-group">
+			<div class="controls">
+			    <label class="checkbox">
+			      <input type="checkbox"> Remember me
+			    </label>
+    			<%= submit_tag "Log In", :class => "btn" %>
+			</div>
+		</div>
+	<% end %>
+
   </div>
-  <div class="field">
-  	<%= label_tag :password %><br>
-  	<%= password_field_tag :password %>
-  </div>
-  <div class="actions"><%= submit_tag "Log In" %></div>
-
-<% end %>
-
+</div>

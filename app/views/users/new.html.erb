@@ -1,29 +1,45 @@
-<h1>Sign Up</h1>
+<div class="row">
+  <div class="offset4 span4 well">
+    
+    <%= form_for @user, :html => { :class => "form-horizontal"} do |f| %>
 
-<%= form_for @user do |f| %>
-  <% if @user.errors.any? %>
-  	<div class="error_messages">
-  	  <h2>Form is invalid</h2>
-  	  <ul>
-  	  	<% for message in @user.errors.full_messages %>
-  	  	  <li><%= message %></li>
-  	  	<% end %>
-  	  </ul>
-  	</div>
-  <% end %>
+      <legend>Sign Up</legend>
+      <div class="control-group">
+        <%= f.label :email, :class =>"control-label" %>
+        <div class="controls">
+          <%= f.text_field :email, :class => "span2", :placeholder =>"Email" %>
+        </div>
+      </div>
 
-  <p>
-  	<%= f.label :email %><br>
-  	<%= f.text_field :email %>
-  </p>
-  <p>
-  	<%= f.label :password %><br>
-  	<%= f.password_field :password %>
-  </p>
-  <p>
-  	<%= f.label :password_confirmation %><br>
-  	<%= f.password_field :password_confirmation %>
-  </p>
+      <div class="control-group">
+      	<%= f.label :password, :class =>"control-label" %>
+        <div class="controls">
+        	<%= f.password_field :password, :class => "span2", :placeholder =>"Password" %>
+        </div>
+      </div>
+      <div class="control-group">
+      	<%= f.label :password_confirmation, :class =>"control-label" %>
+        <div class="controls">
+      	  <%= f.password_field :password_confirmation, :class => "span2", :placeholder =>"Password Confirm" %>
+        </div>
+      </div>
+      <div class="control-group">
+        <div class="controls">
+          <%= f. submit "Sign Up", :class => "btn" %>
+        </div>
+      </div>
+    
+      <% if @user.errors.any? %>
+        <div class="error_messages">
+          <ul>
+            <% for message in @user.errors.full_messages %>
+              <li><%= message %></li>
+            <% end %>
+          </ul>
+        </div>
+      <% end %>
 
-  <p class="button"><%= f. submit %></p>
-<% end %>
+    <% end %>
+  </div>
+</div>
+
