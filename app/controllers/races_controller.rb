@@ -1,6 +1,14 @@
 class RacesController < ApplicationController
   # GET /races
   # GET /races.json
+  def search
+    @races = Race.find(:all, :group => :race_name).collect { |r| r.race_name }
+
+    respond_to do |format|
+      format.html # search.html.erb
+      format.json { render json: @races }
+    end
+  end
   def index
     @races = Race.all
     @race = Race.new
