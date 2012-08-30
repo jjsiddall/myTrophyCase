@@ -23,10 +23,12 @@ $(function() {
     {
       if (racesObj[i].race_name === chosenRace)
       {
-        var newButton = document.createElement("input");
-        newButton.setAttribute("class", "btn btn-large span1 btn-primary");
-        newButton.setAttribute("value", racesObj[i].year);
-        $("#raceData").append(newButton);
+        var newListItem = document.createElement("li");
+        var newLink = document.createElement("a")
+        newLink.innerText = racesObj[i].year;
+        newListItem.appendChild(newLink);
+ 
+        $("#raceData").append(newListItem);
       }
     }
 
