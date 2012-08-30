@@ -2,6 +2,7 @@ class RacesController < ApplicationController
   # GET /races
   # GET /races.json
   def search
+    @allRaceData = Race.find(:all, :order => :race_name)
     @races = Race.find(:all, :group => :race_name).collect { |r| r.race_name }
 
     respond_to do |format|

@@ -1,4 +1,5 @@
 var globalRacersObject = new Object();
+var map;
 
 // this function will run as soon as javascript is ready
 $(function() {
@@ -7,24 +8,36 @@ $(function() {
     findIronmanRaces(savedRaces);
   });
 
+
+  initializeGoogleMap();
+
   $("#testButton").on('click', function(){
-      var newRaceForm = document.createElement("form");
-      newRaceForm.action="/races";
-      newRaceForm.method="post";
-            
-      var hiddenRaceInfoField = document.createElement("input");
-      hiddenRaceInfoField.setAttribute("name", "hello");
-      hiddenRaceInfoField.setAttribute("value", "hello2");
-      hiddenRaceInfoField.setAttribute("type", "hidden");
+  
 
-      newRaceForm.appendChild(hiddenRaceInfoField);
+    racesObj = $("#raceData").data('races')
+    chosenRace = $("#race_search").val();
 
-       
-   
+    $("#raceData").children().remove()
+    var iLen=racesObj.length;
+    for(var i=0; i<iLen; i++) 
+    {
+      if (racesObj[i].race_name === chosenRace)
+      {
+        var newButton = document.createElement("input");
+        newButton.setAttribute("class", "btn btn-large span1 btn-primary");
+        newButton.setAttribute("value", racesObj[i].year);
+        $("#raceData").append(newButton);
+      }
+    }
+
+    codeAddress();
   });
+
 
   //used for trophy set up - drag 'em around and drop'em where ever
   $( ".draggable" ).draggable({ containment: ".trophyHolder", snap: ".ui-widget-header", snapMode: "inner" });
+  
+
 
   $('#result_racerName').bind("change keypress keyup", function(event){
   
@@ -47,6 +60,33 @@ $(function() {
    });
 
 }); 
+
+function initializeGoogleMap() {
+  var mapOptions = {
+    center: new google.maps.LatLng(-34.397, 150.644),
+    zoom: 8,
+    mapTypeId: google.maps.MapTypeId.ROADMAP
+  };
+  map = new google.maps.Map(document.getElementById("map_canvas"), mapOptions);
+  console.log(map)
+}   
+
+function codeAddress() {
+  var address = "chicago, il";
+  var geocoder = new google.maps.Geocoder();
+  geocoder.geocode( { 'address': address}, function(results, status) {
+    if (status == google.maps.GeocoderStatus.OK) {
+      map.setCenter(results[0].geometry.location);
+      // var marker = new google.maps.Marker({
+      //     map: map,
+      //     position: results[0].geometry.location
+      // });
+    } else {
+      alert("Geocode was not successful for the following reason: " + status);
+    }
+  });
+  console.log("")
+}
 
 function getPageDataYQL(firstLetter){
   var container = $('#target');
@@ -348,9 +388,10 @@ function pullInIronmanRaceData(data, savedRaces){
         //Submit Button
         var hiddenRaceInfoField = document.createElement("input");
         hiddenRaceInfoField.setAttribute("class", "btn");
+        hiddenRaceInfoField.setAttribute("value", "Add Race");
         hiddenRaceInfoField.setAttribute("name", "commit");        
         hiddenRaceInfoField.setAttribute("type", "submit");
-        hiddenRaceInfoField.setAttribute("value", "Add Race");
+
    
         newRaceForm.appendChild(hiddenRaceInfoField);
     

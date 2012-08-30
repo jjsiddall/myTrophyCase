@@ -1,4 +1,23 @@
 <h1>Search for a RACE!</h1>
+<div class="row">
+  <div class="span7">
+	<div class="row">
+		<div class='well'>
+			<div class="input-append">
+				<input id="race_search" type="text" class="span6" style="margin: 0 auto;" data-provide="typeahead" data-items="8" data-source='<%= @races %>'><button id='testButton' class='btn'>Get Results</button>
+			</div>
+		</div>
+	</div>  		
+	<div class='row'>
+		<div id="map_canvas" style="height:300px"></div>	
+	</div>  
 
-<input type="text" class="span3" style="margin: 0 auto;" data-provide="typeahead" data-items="8" data-source='<%= @races %>'>
+  </div>
+
+  <div class='span5'>
+	<ul id="raceData" data-races='<%= @allRaceData.to_json %>'></ul>  	
+  </div>
+</div>
+
+
 

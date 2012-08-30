@@ -5,9 +5,9 @@ MyTrophyCase::Application.routes.draw do
   get 'signup', to: 'users#new', as: 'signup'
   get 'login', to: 'sessions#new', as: 'login'
   get 'logout', to: 'sessions#destroy', as: 'logout'
-  get 'search', to: 'races#search'
+  get 'search', to: 'races#search', as: 'search'
 
-  root :to => "sessions#new"
+  root :to => "races#search", as: 'search'
   
   resources :sessions
   
