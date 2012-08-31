@@ -7,7 +7,7 @@ MyTrophyCase::Application.routes.draw do
   get 'logout', to: 'sessions#destroy', as: 'logout'
   get 'search', to: 'races#search', as: 'search'
 
-  root :to => "races#search", as: 'search'
+  root :to => "races#search"
   
   resources :sessions
   

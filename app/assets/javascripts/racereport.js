@@ -3,37 +3,25 @@ var map;
 
 // this function will run as soon as javascript is ready
 $(function() {
+  
+  //initializeGoogleMap();
+
+  ///////////////////////////
+  //Start: for testing
+  
+  //fetchResultsStoredByMTC();
+
+  //End: for testing
+  ///////////////////////////
+  
   $("#fetchIronmanRaces").on('click', function() {
     var savedRaces = getSavedRaces();
     findIronmanRaces(savedRaces);
   });
 
 
-  initializeGoogleMap();
 
-  $("#testButton").on('click', function(){
-  
-
-    racesObj = $("#raceData").data('races')
-    chosenRace = $("#race_search").val();
-
-    $("#raceData").children().remove()
-    var iLen=racesObj.length;
-    for(var i=0; i<iLen; i++) 
-    {
-      if (racesObj[i].race_name === chosenRace)
-      {
-        var newListItem = document.createElement("li");
-        var newLink = document.createElement("a")
-        newLink.innerText = racesObj[i].year;
-        newListItem.appendChild(newLink);
- 
-        $("#raceData").append(newListItem);
-      }
-    }
-
-    codeAddress();
-  });
+  $("#testButton").on('click', function(){ fetchResultsStoredByMTC(); });
 
 
   //used for trophy set up - drag 'em around and drop'em where ever
@@ -63,6 +51,45 @@ $(function() {
 
 }); 
 
+function fetchResultsStoredByMTC(){
+  racesObj = $("#raceData").data('races')
+  
+  chosenRace = $("#race_search").val();
+  //chosenRace = 'IRONMAN 70.3 Raleigh';
+
+  $("#raceData").children().remove()
+  var resultYearButtonId = 0
+  var iLen=racesObj.length;
+  for(var i=0; i<iLen; i++) 
+  {
+    if (racesObj[i].race_name === chosenRace)
+    {
+      var newListItem = document.createElement("li");
+      newListItem.setAttribute('class', 'resultFound');
+      var newLink = document.createElement("a");
+      newLink.setAttribute('class', 'btn btn-success btn-large resultFound');
+      newLink.setAttribute('href', racesObj[i].raceResultURL);
+    //  newLink.setAttribute('type', 'hidden');
+      
+      resultYearButtonId++
+      newLink.setAttribute('id', 'result_Button_id_' + resultYearButtonId);
+
+      newLink.innerText = racesObj[i].year;
+      newListItem.appendChild(newLink);
+
+      $("#raceData").append(newListItem);
+
+    }
+//    $('#result_Button_id_' + resultYearButtonId).effect( 'slide', {}, 50000,{});
+  }
+
+  $('#raceData').effect( 'slide', {}, 500);
+  
+  
+  codeAddress();
+
+}
+
 function initializeGoogleMap() {
   var mapOptions = {
     center: new google.maps.LatLng(-34.397, 150.644),
@@ -70,7 +97,7 @@ function initializeGoogleMap() {
     mapTypeId: google.maps.MapTypeId.ROADMAP
   };
   map = new google.maps.Map(document.getElementById("map_canvas"), mapOptions);
-  console.log(map)
+
 }   
 
 function codeAddress() {
@@ -87,7 +114,6 @@ function codeAddress() {
       alert("Geocode was not successful for the following reason: " + status);
     }
   });
-  console.log("")
 }
 
 function getPageDataYQL(firstLetter){
@@ -217,8 +243,6 @@ function findIronmanRaces(savedRaces){
   
   var url = "http://ironman.com/results"
 
-  console.log("fetching " + url);
-
     //YQL allows me to get the website as a JSON and then I can parse it
     $.getJSON("http://query.yahooapis.com/v1/public/yql?"+  
               "q=select%20*%20from%20html%20where%20url%3D%22"+
@@ -258,14 +282,19 @@ function pullInIronmanRaceData(data, savedRaces){
 
   var iLen=racesArray.length;
   for(var i=0; i<iLen; i++) { //take the array and pull out only the names and the href associated with it
+
+    var raceYearURLs = new Array();
     if (i%2 === 0) 
     {
       checkCounter = checkCounter + 1
       var raceName = racesArray[i].split('alt=')[1].split(' Logo')[0]  //*****put this into Race Object!
       if (raceName.indexOf("Ironman Asia-Pacific Championship Melbourne") > -1){ raceName = "Ironman Asia-Pacific Championship Melbourne" }
+      
     }
     else
     {
+
+
       //racesArray[i] = racesArray[i].replace(/\s+/g, ''); //take all the white space out of that section of the array
       if (racesArray[i].indexOf("Go to tracker »") > -1)//check to see if there are results available for this race
       {
@@ -276,15 +305,13 @@ function pullInIronmanRaceData(data, savedRaces){
 
         racesArray[i] = racesArray[i][1].split("<a href=");
 
-        var raceYearURLs = new Array();
+
         var jLen=racesArray[i].length;
         for(var j=0; j<jLen; j++) {
            // racesArray[i] = racesArray[i][j].split("Go to tracker »");
           if (racesArray[i][j].indexOf("Go to tracker »") > -1){
             
             raceYearURL = "http://ironman.com" + racesArray[i][j].split(" title")[0].replace(/amp;/g, '');
-            
-            console.log(raceYearURL);
 
             if ($.inArray(raceYearURL, savedRaces) ===-1){            
               raceYearURLs.push(raceYearURL);
@@ -298,15 +325,16 @@ function pullInIronmanRaceData(data, savedRaces){
         racesArray[i] = ""
       }
 
-
+      if (raceYearURLs.length > 0)
+      {        
         var race = new Object(); //this is what we will hold all the race data in
         race.raceName = raceName;
         race.raceURL = raceURL;
         race.results = raceYearURLs;
         races.push(race);
 
-    }
-    
+      }
+    }   
   }
 
 
