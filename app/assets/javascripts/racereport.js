@@ -4,7 +4,6 @@ var map;
 // this function will run as soon as javascript is ready
 $(function() {
   
-  //initializeGoogleMap();
 
   ///////////////////////////
   //Start: for testing
@@ -21,7 +20,10 @@ $(function() {
 
 
 
-  $("#testButton").on('click', function(){ fetchResultsStoredByMTC(); });
+  $("#testButton").on('click', function(){ 
+    initializeGoogleMap();
+    fetchResultsStoredByMTC(); 
+  });
 
 
   //used for trophy set up - drag 'em around and drop'em where ever
@@ -68,7 +70,7 @@ function fetchResultsStoredByMTC(){
       newListItem.setAttribute('class', 'resultFound');
       var newLink = document.createElement("a");
       newLink.setAttribute('class', 'btn btn-success btn-large resultFound');
-      newLink.setAttribute('href', racesObj[i].raceResultURL);
+      newLink.setAttribute('href', '/results');
     //  newLink.setAttribute('type', 'hidden');
       
       resultYearButtonId++
@@ -79,6 +81,8 @@ function fetchResultsStoredByMTC(){
 
       $("#raceData").append(newListItem);
 
+      var address = racesObj[i].location;
+
     }
 //    $('#result_Button_id_' + resultYearButtonId).effect( 'slide', {}, 50000,{});
   }
@@ -86,13 +90,14 @@ function fetchResultsStoredByMTC(){
   $('#raceData').effect( 'slide', {}, 500);
   
   
-  codeAddress();
+  codeAddress(address);
 
 }
 
 function initializeGoogleMap() {
+  
   var mapOptions = {
-    center: new google.maps.LatLng(-34.397, 150.644),
+//    center: new google.maps.LatLng(-34.397, 150.644),
     zoom: 8,
     mapTypeId: google.maps.MapTypeId.ROADMAP
   };
@@ -100,16 +105,16 @@ function initializeGoogleMap() {
 
 }   
 
-function codeAddress() {
-  var address = "chicago, il";
+function codeAddress(address) {
+  //var address = "chicago, il";
   var geocoder = new google.maps.Geocoder();
   geocoder.geocode( { 'address': address}, function(results, status) {
     if (status == google.maps.GeocoderStatus.OK) {
       map.setCenter(results[0].geometry.location);
-      // var marker = new google.maps.Marker({
-      //     map: map,
-      //     position: results[0].geometry.location
-      // });
+      var marker = new google.maps.Marker({
+          map: map,
+          position: results[0].geometry.location
+      });
     } else {
       alert("Geocode was not successful for the following reason: " + status);
     }

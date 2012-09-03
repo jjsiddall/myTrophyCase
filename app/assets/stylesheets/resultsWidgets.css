@@ -2,11 +2,10 @@
 /************************************************************
         This is use for the Flags (associated with country)
 *************************************************************/
+
 .resultFound {
   padding-top: 10px;
 }
-
-
 
 .draggable { 
   width: 70px; 

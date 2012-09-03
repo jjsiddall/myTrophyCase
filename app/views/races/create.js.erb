@@ -11,4 +11,10 @@ $("#race_race_id").val("");
 $("#race_location").val("");
 
 $('#numberOfSavedRaces').html(parseInt($('#numberOfSavedRaces').html()) +1);
-$('#numberOfNewRaces').html($('#numberOfNewRaces').html()-1);
+
+numberOfNewRaces = $('#numberOfNewRaces').html()
+if (numberOfNewRaces>0)
+{
+	numberOfNewRaces--
+	$('#numberOfNewRaces').html(numberOfNewRaces);
+}
