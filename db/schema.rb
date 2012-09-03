@@ -11,12 +11,10 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20120828041713) do
+ActiveRecord::Schema.define(:version => 20120831215714) do
 
   create_table "races", :force => true do |t|
-    t.string   "city"
-    t.string   "state"
-    t.string   "country"
+    t.string   "location"
     t.string   "distance"
     t.string   "race_type"
     t.string   "race_name"

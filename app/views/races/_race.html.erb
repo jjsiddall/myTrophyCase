@@ -6,10 +6,7 @@
   <td><%= link_to zebra.year, zebra.raceResultURL, :target => "_blank" %></td>
   <td><%= zebra.race_id %></td>
 
-  <td><%= zebra.city %></td>
-  <td><%= zebra.state %></td>
-  <td><%= zebra.country %></td>
-
+  <td><%= zebra.location %></td>
 
   <td><%= link_to('ID',edit_race_url(zebra.id), :remote => true, :class => "btn") %></td>
   <td><%= link_to('Edit',edit_race_url(zebra.id), :class => "btn btn-inverse") %></td>
