@@ -275,7 +275,7 @@ function pullInIronmanRaceData(data, savedRaces){
   var racesString = data.replace(/['"]/g,''); //.replace(/»/g, '').replace(/\./g, '').replace(/\|/g, '');
 
 //  racesString = data.replace(/\s+/g, '').replace(/<\/td>/g, '').replace(/class=\"right\"/g, '');//take out white space and end of table data tags
-  var racesArray = racesString.split('inline '); //split up array based on races only and remove first item (as it contains nothing useful)
+  var racesArray = racesString.split('inline'); //split up array based on races only and remove first item (as it contains nothing useful)
   racesArray.shift();  
 
   //we have an array of races as a string of info and we need to break it into usable pieces  
@@ -288,6 +288,7 @@ function pullInIronmanRaceData(data, savedRaces){
     {
       checkCounter = checkCounter + 1
       var raceName = racesArray[i].split('alt=')[1].split(' Logo')[0]  //*****put this into Race Object!
+      var raceLocation =racesArray[i].split('<span class=location>')[1].split('</span>')[0];  //*****put this into Race Object!
       if (raceName.indexOf("Ironman Asia-Pacific Championship Melbourne") > -1){ raceName = "Ironman Asia-Pacific Championship Melbourne" }
       
     }
@@ -329,6 +330,7 @@ function pullInIronmanRaceData(data, savedRaces){
       {        
         var race = new Object(); //this is what we will hold all the race data in
         race.raceName = raceName;
+        race.raceLocation = raceLocation;
         race.raceURL = raceURL;
         race.results = raceYearURLs;
         races.push(race);
@@ -346,6 +348,7 @@ function pullInIronmanRaceData(data, savedRaces){
     if(races[k].results != undefined)
     {
       var htmlRaceName = races[k].raceName;
+      var htmlRaceLocation = races[k].raceLocation;
       var htmlraceURL = races[k].raceURL;
 
       var htmlRaceType = 'Tri';
@@ -377,6 +380,13 @@ function pullInIronmanRaceData(data, savedRaces){
         var hiddenRaceInfoField = document.createElement("input");
         hiddenRaceInfoField.setAttribute("name", "race[race_name]");
         hiddenRaceInfoField.setAttribute("value", htmlRaceName);
+        hiddenRaceInfoField.setAttribute("type", "hidden");
+        newRaceForm.appendChild(hiddenRaceInfoField);
+              
+        //Race Location
+        var hiddenRaceInfoField = document.createElement("input");
+        hiddenRaceInfoField.setAttribute("name", "race[location]");
+        hiddenRaceInfoField.setAttribute("value", htmlRaceLocation);
         hiddenRaceInfoField.setAttribute("type", "hidden");
         newRaceForm.appendChild(hiddenRaceInfoField);
 
@@ -434,7 +444,7 @@ function pullInIronmanRaceData(data, savedRaces){
             '<td>'+htmlRaceDistance+'</td>' +
             '<td><a href='+htmlRaceResultYearURL+' target="_blank">'+htmlYear+'</a></td>' +
             '<td></td>' +
-            '<td></td>' +
+            '<td>'+htmlRaceLocation+'</td>' +
             '<td></td>' +
             '<td></td>' +
             '<td id=td_'+newRaceNumber+'></td>' +
