@@ -71,7 +71,11 @@
 .flag.flag-COD {background-position: -100px -30px}
 .flag.flag-CAF {background-position: -125px -30px}
 .flag.flag-COG {background-position: -150px -30px}
+
+/*Switzerland*/
 .flag.flag-CHE {background-position: -175px -30px}
+.flag.flag-SUI {background-position: -175px -30px}
+
 .flag.flag-CIV {background-position: -200px -30px}
 .flag.flag-COK {background-position: -225px -30px}
 .flag.flag-CHL {background-position: -250px -30px}
@@ -83,7 +87,11 @@
 .flag.flag-CPV {background-position: 0 -45px}
 .flag.flag-CYP {background-position: -25px -45px}
 .flag.flag-CZE {background-position: -50px -45px}
+
+/*Germany*/
 .flag.flag-DEU {background-position: -75px -45px}
+.flag.flag-GER {background-position: -75px -45px}
+
 .flag.flag-DJI {background-position: -100px -45px}
 .flag.flag-DNK {background-position: -125px -45px}
 .flag.flag-DMA {background-position: -150px -45px}

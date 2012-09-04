@@ -21,8 +21,14 @@ $(function() {
 
 
   $("#testButton").on('click', function(){ 
-    initializeGoogleMap();
-    fetchResultsStoredByMTC(); 
+    var race = $("#race_search").val().replace(/(^\s*)|(\s*$)/gi,"").replace(/[ ]{2,}/gi," ").replace(/\n /,"\n");
+
+    if (race != "")
+    {
+      initializeGoogleMap();
+      fetchResultsStoredByMTC(race); 
+    }
+    
   });
 
 
@@ -53,10 +59,12 @@ $(function() {
 
 }); 
 
-function fetchResultsStoredByMTC(){
-  racesObj = $("#raceData").data('races')
+function fetchResultsStoredByMTC(race){
+  racesObj = $("#raceData").data('races');
   
-  chosenRace = $("#race_search").val();
+  userObj = $("#raceData").data('userid');
+
+  chosenRace = race;
   //chosenRace = 'IRONMAN 70.3 Raleigh';
 
   $("#raceData").children().remove()
@@ -70,7 +78,15 @@ function fetchResultsStoredByMTC(){
       newListItem.setAttribute('class', 'resultFound');
       var newLink = document.createElement("a");
       newLink.setAttribute('class', 'btn btn-success btn-large resultFound');
-      newLink.setAttribute('href', '/results');
+      // newLink.setAttribute('href', "racesObj[i].raceResultURL"); 
+      if (userObj != '')
+      {  
+        newLink.setAttribute('href', "users/"+ userObj +"/results/new?raceid="+racesObj[i].race_id);
+      }
+      else
+      {
+        newLink.setAttribute('href', "login"); 
+      }
     //  newLink.setAttribute('type', 'hidden');
       
       resultYearButtonId++
@@ -123,8 +139,11 @@ function codeAddress(address) {
 
 function getPageDataYQL(firstLetter){
   var container = $('#target');
+  var raceIdObj = $("#raceIdStorage").data("raceid");
   
-  var url = "http://tracking.ironmanlive.com/newsearch.php?rid=175&letter=" + firstLetter //the is the website I want to pull from
+  if (raceIdObj === "" || raceIdObj === null){ raceIdObj = 1143239867;}
+
+  var url = "http://tracking.ironmanlive.com/newsearch.php?rid=" + raceIdObj + "&letter=" + firstLetter; //the is the website I want to pull from
 
 
     //YQL allows me to get the website as a JSON and then I can parse it
@@ -153,11 +172,17 @@ function filterForNamesArray(data){
   var racers = new Object() //this is what we will hold all the racer data in
   
   //The following "cleans" the returned page and gives back an array from the table list of racers (not pretty, but works)
-  var namesString = data.replace(/\s+/g, '').replace(/<\/td>/g, '').replace(/class=\"right\"/g, '')//take out white space and end of table data tags
+
+  var namesString = data.replace(/\s+/g, '').replace(/<\/td>/g, '').replace(/<\/tr>/g, '').replace(/class=\"right\"/g, '').replace(/<\/p>/g, '').replace(/<p>/g, '')//take out white space and end of table data tags
   namesString = namesString.split('<tbody>')[1].split('</tbody>')[0]; //split out all non-table elements
+
   var namesArray = namesString.split("<tr>"); //Break out individuals 
+    
   namesArray.shift(); //get rid of non-person array entries
   
+
+ 
+
   //we have an array of racers as a string of info and we need to break it into usable pieces  
   var iLen=namesArray.length;
     for(var i=0; i<iLen; i++) { //take the array and pull out only the names and the href associated with it
@@ -167,23 +192,28 @@ function filterForNamesArray(data){
       namesArray[i][0] = namesArray[i][1].match("\">(.*?)<\/a>")[1]; //LastName,FirstName
       
       nextRacer = new Object(); //We have the next racer, now add it to the object and fill in the fields for that object
+ 
+      
 
       nextRacer.firstName = capitalizeFirstLetterOnly(namesArray[i][0].split(",")[1]);
       nextRacer.lastName = capitalizeFirstLetterOnly(namesArray[i][0].split(",")[0]);
-      nextRacer.bib = namesArray[i][1].match("bib=(.*?)&amp")[1]; //Bib
-      nextRacer.country = namesArray[i][2].match("<p>(.*?)<\/p>")[1]; //Country
-      nextRacer.swimTime = namesArray[i][3].match("<p>(.*?)<\/p>")[1]; //Swim Time
-      nextRacer.bikeTime = namesArray[i][4].match("<p>(.*?)<\/p>")[1]; //Bike Time
-      nextRacer.runTime = namesArray[i][5].match("<p>(.*?)<\/p>")[1]; //Run Time
-      nextRacer.totalTime = namesArray[i][6].match("<p>(.*?)<\/p>")[1]; //Total Time
-      nextRacer.divRank = namesArray[i][7].match("<p>(.*?)<\/p>")[1]; //Division Rank
-      nextRacer.overallRank = namesArray[i][8].match("<p>(.*?)<\/p>")[1]; //Overall Rank
-      
+
+      nextRacer.bib = namesArray[i][1].match("bib=(.*?)&")[1]; //Bib
+   
+      nextRacer.country = namesArray[i][2]//.match("<p>(.*?)<\/p>"); //Country
+      nextRacer.swimTime = namesArray[i][3]//.match("<p>(.*?)<\/p>"); //Swim Time
+     
+      nextRacer.bikeTime = namesArray[i][4]//.match("<p>(.*?)<\/p>"); //Bike Time
+      nextRacer.runTime = namesArray[i][5]//.match("<p>(.*?)<\/p>"); //Run Time
+      nextRacer.totalTime = namesArray[i][6]//.match("<p>(.*?)<\/p>"); //Total Time
+      nextRacer.divRank = namesArray[i][7]//.match("<p>(.*?)<\/p>"); //Division Rank
+      nextRacer.overallRank = namesArray[i][8]//.match("<p>(.*?)<\/p>"); //Overall Rank
+ 
       //fill up the "racers" hash with each nextRacer object
       racers[nextRacer.bib] = nextRacer;
 
     }
-  
+
 //TODO: This should NOT all be here in this function...but for now its what I have (this is really hacky bullshit on my part...)
 
   //We have a bunch of racers, now we need to put them into an array that the "bootstrap typeahead" can read and use

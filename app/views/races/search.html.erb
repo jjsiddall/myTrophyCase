@@ -15,7 +15,7 @@
   </div>
 
   <div class='span5'>
-	<ul id="raceData" class='unstyled' data-races='<%= @allRaceData.to_json %>'></ul>  	
+	<ul id="raceData" class='unstyled' data-races='<%= @allRaceData.to_json %>' data-userid='<%=session[:user_id]%>'></ul>  	
   </div>
 </div>
 

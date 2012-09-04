@@ -1,4 +1,4 @@
-<title>"test"</title>
+<div id='raceIdStorage' style='hidden' data-raceid=<%= params[:raceid]%>></div>
 <%= form_for [current_user, @result] do |f| %>
 
   <% if @result.errors.any? %>
@@ -12,7 +12,6 @@
       </ul>
     </div>
   <% end %>
-
 <!-- Puts the first row on page to display major items: name, bib, overall time, Division, and place -->
   <div class="row"> <!--row 1 -->
     <div class="span12">
