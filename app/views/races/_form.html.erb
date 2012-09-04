@@ -6,7 +6,7 @@
     <td><%= f.text_field :race_type, :class => "input-mini", :placeholder => "Type" %></td>
     <td><%= f.text_field :distance, :class => "input-mini", :placeholder => "Distance" %></td>
     <td><%= f.text_field :year, :class => "input-mini", :placeholder => "Year" %></td>
-    <td><%= f.text_field :race_id, :class => "input-mini", :placeholder => "ID" %></td>
+    <td><%= f.text_field :race_web_id, :class => "input-mini", :placeholder => "ID" %></td>
 
 	  <td><%= f.text_field :location, :class => "input-mini", :placeholder => "City" %></td>
 
@@ -15,7 +15,7 @@
     <td></td>
   <% else %>
 
-    <td><%= f.text_field :race_id, :class => "input-mini", :placeholder => "ID" %></td>
+    <td><%= f.text_field :race_web_id, :class => "input-mini", :placeholder => "ID" %></td>
 
     <td><%= f.submit "Chg ID", :class => "btn btn-inverse" %></td>
 

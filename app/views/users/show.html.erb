@@ -46,8 +46,8 @@
             <td><%= result.swimTime.try(:strftime, "%H:%M:%S") %></td>
             <td><%= result.bikeTime.try(:strftime, "%H:%M:%S") %></td>
             <td><%= result.runTime.try(:strftime, "%H:%M:%S") %></td>
-            <td><%= link_to 'Edit', edit_user_result_path(current_user, result), :class => "btn" %></td> 
-            <td><%= link_to 'Destroy', user_result_url(current_user, result), :class => "btn btn-danger", method: :delete %></td>
+            <td><%= link_to 'Edit', edit_result_path( result), :class => "btn" %></td> 
+            <td><%= link_to 'Destroy', result_url(result), :class => "btn btn-danger", method: :delete %></td>
           </tr>
         <% end %>
       </tbody>

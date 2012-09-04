@@ -81,7 +81,7 @@ function fetchResultsStoredByMTC(race){
       // newLink.setAttribute('href', "racesObj[i].raceResultURL"); 
       if (userObj != '')
       {  
-        newLink.setAttribute('href', "users/"+ userObj +"/results/new?raceid="+racesObj[i].race_id);
+        newLink.setAttribute('href', "results/new?raceid="+racesObj[i].race_id);
       }
       else
       {
@@ -141,7 +141,7 @@ function getPageDataYQL(firstLetter){
   var container = $('#target');
   var raceIdObj = $("#raceIdStorage").data("raceid");
   
-  if (raceIdObj === "" || raceIdObj === null){ raceIdObj = 1143239867;}
+  if (raceIdObj === "undefined" || raceIdObj === ""||  raceIdObj === null ){ raceIdObj = 1143239867;}
 
   var url = "http://tracking.ironmanlive.com/newsearch.php?rid=" + raceIdObj + "&letter=" + firstLetter; //the is the website I want to pull from
 

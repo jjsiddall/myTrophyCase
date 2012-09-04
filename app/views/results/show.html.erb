@@ -46,8 +46,8 @@
 
     <div class="form-actions">
       <%= link_to 'View', user_path(session[:user_id]), :class => 'btn'  %>
-      <%= link_to 'Edit', edit_user_result_path(current_user, @result), :class => 'btn' %>
-      <%= link_to 'Delete', user_result_url(current_user, @result), :method => 'delete', :class => 'btn btn-danger' %>
+      <%= link_to 'Edit', edit_result_path(@result), :class => 'btn' %>
+      <%= link_to 'Delete', result_url(@result), :method => 'delete', :class => 'btn btn-danger' %>
     </div>
   </div>
 </div>

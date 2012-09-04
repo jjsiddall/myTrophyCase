@@ -3,7 +3,7 @@
 <div class="row">
   <div class="span12">
     <h1>Listing results</h1>
-    <%= link_to 'Add Another', new_user_result_path(current_user), :class => "btn btn-large pull-right" %>
+    <%= link_to 'Add Another', new_result_path(current_user), :class => "btn btn-large pull-right" %>
   </div>
 </div>
 
@@ -38,8 +38,8 @@
             <td><%= result.swimTime.try(:strftime, "%H:%M:%S") %></td>
             <td><%= result.bikeTime.try(:strftime, "%H:%M:%S") %></td>
             <td><%= result.runTime.try(:strftime, "%H:%M:%S") %></td>
-            <td><%= link_to 'Edit', edit_user_result_path(current_user, result), :class => "btn" %></td>
-            <td><%= link_to 'Destroy', result, :class => "btn btn-danger", method: :delete %></td>
+            <td><%= link_to 'Edit', edit_result_path(result), :class => "btn" %></td>
+            <td><%= link_to 'Destroy', result_url(result), :class => "btn btn-danger", method: :delete %></td>
           </tr>
         <% end %>
       </tbody>
@@ -49,4 +49,4 @@
 
 <br />
 
-<%= link_to 'Add Another', new_user_result_path(current_user), :class => "btn btn-large pull-right" %>
+<%= link_to 'Add Another', new_result_path(current_user), :class => "btn btn-large pull-right" %>

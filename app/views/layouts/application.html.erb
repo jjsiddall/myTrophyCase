@@ -72,11 +72,11 @@
                     <% if current_user %>
                       <% if @page_tab == "search" %>
                   		  <li class="active">
-                          <%= link_to '<i class="icon-search icon-white"></i> Search'.html_safe, new_user_result_path(current_user)  %>
+                          <%= link_to '<i class="icon-search icon-white"></i> Search'.html_safe, search_path %>
                         </li>
                       <% else %>
                         <li>
-                          <%= link_to 'Search', new_user_result_path(current_user) %>
+                          <%= link_to 'Search', search_path %>
                         </li>                    
                       <% end %>
 

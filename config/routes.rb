@@ -10,9 +10,7 @@ MyTrophyCase::Application.routes.draw do
   root :to => "races#search"
   
   resources :sessions
-  
-  resources :users do
-  	resources :results
-  end
+  resources :results
+  resources :users
 
 end

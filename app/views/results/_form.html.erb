@@ -1,5 +1,5 @@
 <div id='raceIdStorage' style='hidden' data-raceid=<%= params[:raceid]%>></div>
-<%= form_for [current_user, @result] do |f| %>
+<%= form_for(@result) do |f| %>
 
   <% if @result.errors.any? %>
     <div id="error_explanation">

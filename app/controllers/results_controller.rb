@@ -1,13 +1,14 @@
 class ResultsController < ApplicationController
   before_filter :check_for_logged_in
-  before_filter :check_for_authorized_user
+  # before_filter :check_for_authorized_user
 
-  def check_for_authorized_user
-    if session[:user_id] != params[:user_id].to_i
-        redirect_to root_url, notice: 'You are not an authorized viewer of requested page'
-      return
-    end 
-  end
+  # def check_for_authorized_user
+  #   if session[:user_id] != params[:user_id].to_i
+  #       redirect_to root_url, notice: 'You are not an authorized viewer of requested page'
+  #     return
+  #   end 
+  # end
+  
   # GET /results
   # GET /results.json
   def index
@@ -61,7 +62,7 @@ class ResultsController < ApplicationController
 
     respond_to do |format|
       if @result.save
-        format.html { redirect_to user_result_path(current_user, @result), notice: 'Result was successfully created.' }
+        format.html { redirect_to result_path(@result), notice: 'Result was successfully created.' }
       else
         format.html { render action: "new" }
       end
@@ -76,7 +77,7 @@ class ResultsController < ApplicationController
 
     respond_to do |format|
       if @result.update_attributes(params[:result])
-        format.html { redirect_to user_result_path(current_user, @result), notice: 'Result was successfully updated.' }
+        format.html { redirect_to result_path(@result), notice: 'Result was successfully updated.' }
         format.json { head :no_content }
       else
         format.html { render action: "edit" }
