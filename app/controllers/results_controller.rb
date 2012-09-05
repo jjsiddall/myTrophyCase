@@ -38,9 +38,9 @@ class ResultsController < ApplicationController
   def new
     #used to label the button on the Race Add/Edit pages
     @AddOrEditButton = "Add Race Result"
-
+    #@Race = Race.new(params[:result])
     @result = Result.new
-
+    @result.race_id= Race.find_by_race_web_id(params[:raceid]).id
   end
 
   # GET /results/1/edit

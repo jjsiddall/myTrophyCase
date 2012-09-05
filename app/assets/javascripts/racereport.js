@@ -25,7 +25,7 @@ $(function() {
 
     if (race != "")
     {
-      initializeGoogleMap();
+//      initializeGoogleMap();
       fetchResultsStoredByMTC(race); 
     }
     
@@ -81,7 +81,7 @@ function fetchResultsStoredByMTC(race){
       // newLink.setAttribute('href', "racesObj[i].raceResultURL"); 
       if (userObj != '')
       {  
-        newLink.setAttribute('href', "results/new?raceid="+racesObj[i].race_id);
+        newLink.setAttribute('href', "results/new?raceid="+racesObj[i].race_web_id);
       }
       else
       {
@@ -106,7 +106,7 @@ function fetchResultsStoredByMTC(race){
   $('#raceData').effect( 'slide', {}, 500);
   
   
-  codeAddress(address);
+//  codeAddress(address);
 
 }
 
