@@ -40,7 +40,7 @@ class ResultsController < ApplicationController
     @AddOrEditButton = "Add Race Result"
     #@Race = Race.new(params[:result])
     @result = Result.new
-    @result.race_id= Race.find_by_race_web_id(params[:raceid]).id
+    @result.race_id = Race.find_by_race_web_id(params[:raceid]).id
   end
 
   # GET /results/1/edit

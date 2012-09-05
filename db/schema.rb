@@ -11,10 +11,9 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20120904221229) do
+ActiveRecord::Schema.define(:version => 20120905024633) do
 
   create_table "races", :force => true do |t|
-    t.string   "location"
     t.string   "distance"
     t.string   "race_type"
     t.string   "race_name"
@@ -24,6 +23,7 @@ ActiveRecord::Schema.define(:version => 20120904221229) do
     t.integer  "year"
     t.string   "raceResultURL"
     t.string   "raceMainURL"
+    t.string   "location"
   end
 
   create_table "results", :force => true do |t|
