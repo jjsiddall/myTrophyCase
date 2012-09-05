@@ -3,7 +3,10 @@ class RacesController < ApplicationController
   # GET /races.json
   def search
     @allRaceData = Race.find(:all, :order => :race_name)
-    @races = Race.find(:all, :group => :race_name).collect { |r| r.race_name }
+    # @races = Race.find(:all, :group => :race_name).collect { |r| r.race_name }
+    @races = Race.all.map { |r| r.race_name }.uniq
+
+    # @race_names_hash = Race.all.group_by { |r| r.race_name }
 
     respond_to do |format|
       format.html # search.html.erb
