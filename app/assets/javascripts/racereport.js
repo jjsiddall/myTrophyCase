@@ -59,8 +59,11 @@ $(function() {
 
 
   $('#result_racerName').bind("change keypress keyup", function(event){
-  
+
       var racerName = $('#result_racerName').val();
+  
+  console.log("looking for: " + racerName);
+
       // If valu e has changed...of only the first letter in the last name, query for last names starting with that letter for that race
       if (racerName.length === 1) {
         getPageDataYQL(racerName);
@@ -165,7 +168,8 @@ function getPageDataYQL(firstLetter){
   if (raceIdObj === "undefined" || raceIdObj === ""||  raceIdObj === null ){ raceIdObj = 1143239867;}
 
   var url = "http://tracking.ironmanlive.com/newsearch.php?rid=" + raceIdObj + "&letter=" + firstLetter; //the is the website I want to pull from
-
+  
+console.log("Sent message for this page: " + url);
 
     //YQL allows me to get the website as a JSON and then I can parse it
     $.getJSON("http://query.yahooapis.com/v1/public/yql?"+  
@@ -177,11 +181,14 @@ function getPageDataYQL(firstLetter){
 
 //TODO: get some a Pub/Sub model working here  (massive refactoring needed...)
           globalRacersObject = filterForNamesArray(data.results[0]);
-          
+
+console.log("got some data back");          
+
           //container.html(data);
         } else {
           var errormsg = '<p>Error: could not load the page.</p>';
           container.html(errormsg);
+console.log(data);    
         }
       }
     );
