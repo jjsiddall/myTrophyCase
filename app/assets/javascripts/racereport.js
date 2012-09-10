@@ -4,6 +4,27 @@ var map;
 // this function will run as soon as javascript is ready
 $(function() {
   
+  $('.trophyHolder').droppable({
+    drop: function(event, ui) {
+      // $(this).html($(ui.draggable).css('left'));
+      // .html('');
+      // $(".last_move").removeClass('last_move');
+      // $(this).addClass('last_move');
+
+      // $(ui.draggable).attr('data-trophyid')
+      
+      $.ajax({
+        url: '/results/'+$(ui.draggable).attr('data-trophyid'),
+        type: 'PUT',
+        data: {
+            'result[id]': $(ui.draggable).attr('data-trophyid'),
+            'result[trophyPositionTop]': $(ui.draggable).css('top'),
+            'result[trophyPositionLeft]': $(ui.draggable).css('left')
+        },
+        dataType: 'json'
+      });
+    }
+  });
 
   ///////////////////////////
   //Start: for testing
