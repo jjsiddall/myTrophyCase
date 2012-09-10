@@ -11,7 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20120905024633) do
+ActiveRecord::Schema.define(:version => 20120910022528) do
 
   create_table "races", :force => true do |t|
     t.string   "distance"
@@ -32,14 +32,16 @@ ActiveRecord::Schema.define(:version => 20120905024633) do
     t.string   "country"
     t.integer  "divisionRank"
     t.integer  "overallRank"
-    t.datetime "created_at",   :null => false
-    t.datetime "updated_at",   :null => false
+    t.datetime "created_at",         :null => false
+    t.datetime "updated_at",         :null => false
     t.time     "totalTime"
     t.time     "swimTime"
     t.time     "bikeTime"
     t.time     "runTime"
     t.integer  "user_id"
     t.integer  "race_id"
+    t.integer  "trophyPositionTop"
+    t.integer  "trophyPositionLeft"
   end
 
   create_table "users", :force => true do |t|

@@ -41,6 +41,7 @@ class ResultsController < ApplicationController
     #@Race = Race.new(params[:result])
     @result = Result.new
     @result.race_id = Race.find_by_race_web_id(params[:raceid]).id
+    @result.save
   end
 
   # GET /results/1/edit
@@ -49,6 +50,7 @@ class ResultsController < ApplicationController
     @AddOrEditButton = "Edit Race Result"
 
     @result = Result.find(params[:id])
+
     if @result.user_id != current_user.id
       redirect_to login_url, notice: 'You are not an authorized editor of this result'
     end

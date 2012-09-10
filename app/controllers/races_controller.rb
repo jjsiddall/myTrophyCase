@@ -14,7 +14,7 @@ class RacesController < ApplicationController
     end
   end
   def index
-    @races = Race.all
+    @races = Race.find(:all, :order => :race_name)
     @race = Race.new
 
     respond_to do |format|
