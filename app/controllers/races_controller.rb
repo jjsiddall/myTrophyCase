@@ -21,6 +21,7 @@ class RacesController < ApplicationController
       format.html # index.html.erb
       format.json { render json: @races }
     end
+    
   end
 
   # GET /races/1
